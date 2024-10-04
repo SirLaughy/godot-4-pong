@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://m0m2lor6qgmg"]
+[gd_scene load_steps=4 format=3 uid="uid://m0m2lor6qgmg"]
 
 [ext_resource type="Texture2D" uid="uid://dblwo7ldvydq8" path="res://Assets/Sprites/sprite_ball.png" id="1_qidsw"]
+[ext_resource type="Script" path="res://Scripts/ball.gd" id="1_tkmrk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vak7"]
 radius = 16.0312
 
 [node name="Ball" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_tkmrk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_qidsw")
