@@ -6,8 +6,8 @@ extends StaticBody2D
 enum direction{UP, DOWN, STOP}
 
 
-var width = 32
-var height = 128
+var width = 64
+var height = 192
 var center = Vector2(round(width/2), round(height/2))
 var paddle_speed = 500
 

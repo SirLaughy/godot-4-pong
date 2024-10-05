@@ -8,22 +8,29 @@ extends CharacterBody2D
 const MAX_Y_VECTOR = 0.6
 
 var speed = initial_speed
-var acceleration = 30
-var width = 32
-var height = 32
+var acceleration = 15
+var width = 64
+var height = 64
 var center = Vector2(round(width/2), round(height/2))
 var direction = Vector2.RIGHT
+var initial_rotation_speed = 0.01
+var rotation_speed = initial_rotation_speed
 
 func _physics_process(delta):
 	if main.game_status == Main.GameStatus.IN_PROGRESS:
 	
 		var collision = move_and_collide(direction * speed * delta)
+		if direction.x < 0:
+			rotation -= rotation_speed
+		if direction.x > 0:
+			rotation += rotation_speed
 		var collider
 		
 		if collision:
 			collider = collision.get_collider()
 			if (collider == $"../Player1" or collider == $"../Player2" or collider == $"../CPU") and is_front(collision):
 				speed += acceleration
+				rotation_speed += initial_rotation_speed
 				direction = new_direction(collider)
 			else:
 				direction = direction.bounce(collision.get_normal())

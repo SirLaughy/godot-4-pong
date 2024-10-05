@@ -30,6 +30,7 @@ func new_round():
 	ball.speed = ball.initial_speed	
 	player1.position = Vector2(50 + player1.center.x, screen_size.y / 2)
 	ball.position = Vector2(screen_size.x / 2, screen_size.y/2)
+	ball.rotation_speed = ball.initial_rotation_speed
 	
 	if game_mode == GameMode.MULTIPLAYER:
 		player2.position = Vector2(screen_size.x - 50 - player2.center.x, screen_size.y / 2)

@@ -5,3 +5,9 @@
 
 [node name="Player2" instance=ExtResource("1_p202q")]
 script = ExtResource("2_tglsa")
+
+[node name="Sprite2D" parent="." index="0"]
+flip_h = true
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+rotation = 3.14159
