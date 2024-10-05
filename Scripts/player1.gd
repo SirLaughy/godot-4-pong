@@ -4,11 +4,11 @@ extends "res://Scripts/paddle.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	in_use = "yes"
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if main.running == "yes":
+	if main.game_status == Main.GameStatus.IN_PROGRESS:
 		move(delta)
 
 func move(delta):

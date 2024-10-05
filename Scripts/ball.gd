@@ -1,31 +1,49 @@
 extends CharacterBody2D
 
-@export var initial_speed = 400
+@export var initial_speed = 600
 
+@onready var main = get_parent()
 @onready var screen_size = get_viewport_rect().size
-@onready var main = $".."
+
+const MAX_Y_VECTOR = 0.6
 
 var speed = initial_speed
-var acceleration = 10
+var acceleration = 30
 var width = 32
 var height = 32
-var center = Vector2(width/2, height/2)
+var center = Vector2(round(width/2), round(height/2))
 var direction = Vector2.RIGHT
 
-func _process(delta):
-	pass
-		
 func _physics_process(delta):
-	var collision = move_and_collide(direction * speed * delta)
-	var collider
+	if main.game_status == Main.GameStatus.IN_PROGRESS:
 	
-	if collision:
-		collider = collision.get_collider()
-		if collider == $"../Player1" or collider == $"../Player2" or collider == $"../CPU":
-			speed += acceleration
-		direction = direction.bounce(collision.get_normal())
+		var collision = move_and_collide(direction * speed * delta)
+		var collider
+		
+		if collision:
+			collider = collision.get_collider()
+			if (collider == $"../Player1" or collider == $"../Player2" or collider == $"../CPU") and is_front(collision):
+				speed += acceleration
+				direction = new_direction(collider)
+			else:
+				direction = direction.bounce(collision.get_normal())
 		
 
 func random_direction():
 	direction = Vector2([1, -1].pick_random(), randf_range(-1, 1))
 	direction.normalized()
+
+func new_direction(collider):
+	var distance = position.y - collider.position.y
+	var new_direction := Vector2()
+	
+	if direction.x > 0:
+		new_direction.x = -1
+	else:
+		new_direction.x = 1
+	new_direction.y = (distance / collider.center.y) * MAX_Y_VECTOR
+	return new_direction.normalized()
+	
+func is_front(collision):
+	return not collision.get_normal().y == -1 or collision.get_normal().y == 1
+
