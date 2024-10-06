@@ -19,15 +19,15 @@ func _on_quit_pressed():
 
 
 func _on_singleplayer_pressed():
-	main.game_mode = Main.GameMode.SINGLEPLAYER
+	main.game_mode = Global.GameMode.SINGLEPLAYER
 	new_game()
 
 func _on_multiplayer_pressed():
-	main.game_mode = Main.GameMode.MULTIPLAYER
+	main.game_mode = Global.GameMode.MULTIPLAYER
 	new_game()
 
 func new_game():
-	$Title.hide()
+	$Logo.hide()
 	$Quit.hide()
 	$Singleplayer.hide()
 	$Multiplayer.hide()
@@ -38,14 +38,14 @@ func new_game():
 	$Message.show()
 	$MessageTimer.start()
 	main.new_round()
-	main.game_status = Main.GameStatus.IN_PROGRESS
+	main.game_status = Global.GameStatus.IN_PROGRESS
 	
 
 func _on_message_timer_timeout():
 	$Message.hide()
 
 func initialise_menu():
-	$Title.show()
+	$Logo.reset_logo()
 	$"New Game".show()
 	$Quit.show()
 	

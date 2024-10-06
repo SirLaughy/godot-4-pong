@@ -17,7 +17,7 @@ var initial_rotation_speed = 0.01
 var rotation_speed = initial_rotation_speed
 
 func _physics_process(delta):
-	if main.game_status == Main.GameStatus.IN_PROGRESS:
+	if main.game_status == Global.GameStatus.IN_PROGRESS:
 	
 		var collision = move_and_collide(direction * speed * delta)
 		if direction.x < 0:

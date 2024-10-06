@@ -1,9 +1,6 @@
 extends Node2D
 
-class_name Main
 
-enum GameMode{SINGLEPLAYER, MULTIPLAYER}
-enum GameStatus{IN_PROGRESS, ENDED, PAUSED}
 
 @onready var player1 = $Player1
 @onready var player2 = $Player2
@@ -12,9 +9,9 @@ enum GameStatus{IN_PROGRESS, ENDED, PAUSED}
 @onready var screen_size = get_viewport_rect().size
 @onready var hud = $HUD
 
-var game_mode := GameMode.SINGLEPLAYER
+var game_mode := Global.GameMode.SINGLEPLAYER
 var score = [0,0]
-var game_status = GameStatus.ENDED
+var game_status = Global.GameStatus.ENDED
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +29,7 @@ func new_round():
 	ball.position = Vector2(screen_size.x / 2, screen_size.y/2)
 	ball.rotation_speed = ball.initial_rotation_speed
 	
-	if game_mode == GameMode.MULTIPLAYER:
+	if game_mode == Global.GameMode.MULTIPLAYER:
 		player2.position = Vector2(screen_size.x - 50 - player2.center.x, screen_size.y / 2)
 		cpu.position = Vector2(screen_size.x * 2, 0)
 		player2.show()
@@ -59,10 +56,10 @@ func _on_ball_timer_timeout():
 	ball.random_direction()
 
 func game_over():
-	if game_status == GameStatus.IN_PROGRESS:
+	if game_status == Global.GameStatus.IN_PROGRESS:
 		$HUD/Message.text = check_winner() + " wins!"
 		$HUD/Message.show()
-	game_status = GameStatus.ENDED
+	game_status = Global.GameStatus.ENDED
 	hud.initialise_menu()
 	initialise_menu()
 
@@ -78,12 +75,12 @@ func initialise_menu():
 	$BallTimer.stop()
 	
 func check_winner():
-	if game_mode == GameMode.SINGLEPLAYER:
+	if game_mode == Global.GameMode.SINGLEPLAYER:
 		if score[0] > 6:
 			return "Player"
 		if score[1] > 6:
 			return "CPU"
-	if game_mode == GameMode.MULTIPLAYER:
+	if game_mode == Global.GameMode.MULTIPLAYER:
 		if score[0] > 6:
 			return "Player 1"
 		if score[1] > 6:
@@ -96,14 +93,14 @@ func check_score():
 		game_over()
 	
 func pause_unpause():
-	if game_status == GameStatus.IN_PROGRESS:
+	if game_status == Global.GameStatus.IN_PROGRESS:
 		$HUD/Message.text = "Paused"
 		$HUD/Message.show()
 		$HUD/PauseMenu.show()
-		$HUD/Title.show()
-		game_status = GameStatus.PAUSED
-	elif game_status == GameStatus.PAUSED:
+		$HUD/Logo.reset_logo()
+		game_status = Global.GameStatus.PAUSED
+	elif game_status == Global.GameStatus.PAUSED:
 		$HUD/Message.hide()
 		$HUD/PauseMenu.hide()
-		$HUD/Title.hide()
-		game_status = GameStatus.IN_PROGRESS	
+		$HUD/Logo.hide()
+		game_status = Global.GameStatus.IN_PROGRESS	

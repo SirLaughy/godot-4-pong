@@ -3,9 +3,6 @@ extends StaticBody2D
 @onready var screen_size = get_viewport_rect().size
 
 
-enum direction{UP, DOWN, STOP}
-
-
 var width = 64
 var height = 192
 var center = Vector2(round(width/2), round(height/2))

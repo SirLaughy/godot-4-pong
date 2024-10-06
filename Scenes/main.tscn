@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cqq5dpjd0hyyj"]
 
-[ext_resource type="Texture2D" uid="uid://boer862hktndi" path="res://Assets/Sprites/sprite_background.png" id="1_aoyxa"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_juicp"]
+[ext_resource type="Texture2D" uid="uid://5vb373nbxgv1" path="res://Assets/Sprites/sprite_sky.png" id="2_kip5k"]
 [ext_resource type="PackedScene" uid="uid://m0m2lor6qgmg" path="res://Scenes/ball.tscn" id="3_2tlln"]
 [ext_resource type="Texture2D" uid="uid://ccje43xsg0ivf" path="res://Assets/Sprites/meaasure lines.png" id="3_qyb5e"]
 [ext_resource type="PackedScene" uid="uid://nitvywqem5g3" path="res://Scenes/player_1.tscn" id="4_no0er"]
@@ -19,7 +19,7 @@ size = Vector2(24, 648)
 script = ExtResource("1_juicp")
 
 [node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("1_aoyxa")
+texture = ExtResource("2_kip5k")
 centered = false
 
 [node name="Center Lines" type="Sprite2D" parent="."]

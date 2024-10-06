@@ -10,8 +10,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if main.game_status == Main.GameStatus.IN_PROGRESS:
-		if main.game_mode == Main.GameMode.MULTIPLAYER:
+	if main.game_status == Global.GameStatus.IN_PROGRESS:
+		if main.game_mode == Global.GameMode.MULTIPLAYER:
 			move(delta)
 
 func move(delta):
