@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+# signals
+signal cpu_collision
+
 # export
 @export var initial_speed = 600
 
@@ -42,6 +45,8 @@ func _physics_process(delta):
 				speed += acceleration
 				rotation_speed += initial_rotation_speed
 				direction = new_direction(collider)
+				if collider == $"../CPU":
+					cpu_collision.emit()
 			else:
 				direction = direction.bounce(collision.get_normal())
 		

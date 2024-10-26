@@ -39,9 +39,7 @@ func new_game():
 	main.score = [0,0]
 	$Score1.text = str(main.score[0])
 	$Score2.text = str(main.score[1])
-	$Message.text = "First to 7 Wins"
-	$Message.show()
-	$MessageTimer.start()
+	message("First to 7 Wins")
 	main.new_round()
 	main.game_status = Global.GameStatus.IN_PROGRESS
 
@@ -64,3 +62,13 @@ func _on_end_game_pressed():
 # resume game from pause
 func _on_resume_game_pressed():
 	main.pause_unpause()
+	
+func message(message_text):
+	$Message.text = str(message_text)
+	$Message.show()
+	$MessageTimer.start()
+	
+
+
+func _on_ball_trapped_detection_ball_trapped():
+	message("Ball Trapped")

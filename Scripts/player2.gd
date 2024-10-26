@@ -13,7 +13,7 @@ func _process(delta):
 # move player 2 paddle up/down depending on input
 func move(delta):
 	if Input.is_action_pressed("player2_down"):
-		position.y += paddle_speed * delta
+		move_down(delta)
 	if Input.is_action_pressed("player2_up"):
-		position.y -= paddle_speed * delta
+		move_up(delta)
 	clamp_paddle()

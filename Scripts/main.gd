@@ -42,6 +42,7 @@ func new_round():
 		cpu.position = Vector2(screen_size.x - 50 - cpu.center.x, screen_size.y / 2)
 		player2.position = Vector2(screen_size.x * 2, 0)
 		cpu.show()
+		cpu.ball_collisions = 0
 	ball.direction = Vector2.ZERO
 	ball.show()
 	$BallTimer.start()
@@ -118,3 +119,4 @@ func pause_unpause():
 		$HUD/PauseMenu.hide()
 		$HUD/Logo.hide()
 		game_status = Global.GameStatus.IN_PROGRESS	
+

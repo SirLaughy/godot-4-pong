@@ -18,6 +18,7 @@ config/icon="res://Assets/Sprites/icon.svg"
 [autoload]
 
 Globals="*res://Scripts/globals.gd"
+Playerconfigs="*res://Scripts/globalConfig.gd"
 
 [display]
 

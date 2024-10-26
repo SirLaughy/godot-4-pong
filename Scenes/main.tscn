@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cqq5dpjd0hyyj"]
+[gd_scene load_steps=13 format=3 uid="uid://cqq5dpjd0hyyj"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_juicp"]
 [ext_resource type="Texture2D" uid="uid://5vb373nbxgv1" path="res://Assets/Sprites/sprite_sky.png" id="2_kip5k"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cq7js5pgx5p05" path="res://Scenes/player_2.tscn" id="5_xe6j5"]
 [ext_resource type="PackedScene" uid="uid://d3l22811y34gf" path="res://Scenes/cpu.tscn" id="6_ch2sn"]
 [ext_resource type="PackedScene" uid="uid://cq6qrrdwgxiid" path="res://Scenes/hud.tscn" id="8_r70bt"]
+[ext_resource type="Script" path="res://Scripts/BallTrappedDetection.gd" id="9_6blkq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m707d"]
 size = Vector2(1150, 32)
@@ -15,10 +16,14 @@ size = Vector2(1150, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyi36"]
 size = Vector2(24, 648)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6f1b"]
+size = Vector2(64, 64)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_juicp")
 
 [node name="Background" type="Sprite2D" parent="."]
+z_index = -1
 texture = ExtResource("2_kip5k")
 centered = false
 
@@ -55,22 +60,58 @@ shape = SubResource("RectangleShape2D_xyi36")
 position = Vector2(232, 360)
 
 [node name="Player1" parent="." instance=ExtResource("4_no0er")]
+z_index = 0
 position = Vector2(136, 184)
 
 [node name="Player2" parent="." instance=ExtResource("5_xe6j5")]
+z_index = 0
 position = Vector2(240, 184)
 
 [node name="CPU" parent="." instance=ExtResource("6_ch2sn")]
+z_index = 0
 position = Vector2(336, 192)
+
+[node name="BallCollisionTimer" type="Timer" parent="CPU"]
+wait_time = 3.0
+one_shot = true
 
 [node name="BallTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("8_r70bt")]
 
+[node name="BallTrappedDetection" type="Area2D" parent="."]
+script = ExtResource("9_6blkq")
+
+[node name="TopLeft" type="CollisionShape2D" parent="BallTrappedDetection"]
+position = Vector2(82, 33)
+shape = SubResource("RectangleShape2D_a6f1b")
+
+[node name="BottomLeft" type="CollisionShape2D" parent="BallTrappedDetection"]
+position = Vector2(82, 615)
+shape = SubResource("RectangleShape2D_a6f1b")
+
+[node name="TopRight" type="CollisionShape2D" parent="BallTrappedDetection"]
+position = Vector2(1070, 33)
+shape = SubResource("RectangleShape2D_a6f1b")
+
+[node name="BottomRight" type="CollisionShape2D" parent="BallTrappedDetection"]
+position = Vector2(1070, 615)
+shape = SubResource("RectangleShape2D_a6f1b")
+
+[node name="BallDetectionTimer" type="Timer" parent="BallTrappedDetection"]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="input_event" from="screen_top" to="Ball" method="_on_screen_top_input_event"]
 [connection signal="input_event" from="screen_bottom" to="Ball" method="_on_screen_bottom_input_event"]
 [connection signal="body_entered" from="screen_left" to="." method="_on_screen_left_body_entered"]
 [connection signal="area_entered" from="screen_right" to="Ball" method="_on_screen_right_area_entered"]
 [connection signal="body_entered" from="screen_right" to="." method="_on_screen_right_body_entered"]
+[connection signal="cpu_collision" from="Ball" to="CPU" method="_on_ball_cpu_collision"]
+[connection signal="timeout" from="CPU/BallCollisionTimer" to="CPU" method="_on_ball_collision_timer_timeout"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
+[connection signal="ball_trapped" from="BallTrappedDetection" to="HUD" method="_on_ball_trapped_detection_ball_trapped"]
+[connection signal="body_entered" from="BallTrappedDetection" to="BallTrappedDetection" method="_on_body_entered"]
+[connection signal="body_exited" from="BallTrappedDetection" to="BallTrappedDetection" method="_on_body_exited"]
+[connection signal="timeout" from="BallTrappedDetection/BallDetectionTimer" to="BallTrappedDetection" method="_on_ball_detection_timer_timeout"]

@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/paddle.gd" id="1_il5le"]
 
 [node name="Paddle" type="StaticBody2D"]
+z_index = 1
 script = ExtResource("1_il5le")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
