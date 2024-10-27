@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqq5dpjd0hyyj"]
+[gd_scene load_steps=14 format=3 uid="uid://cqq5dpjd0hyyj"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_juicp"]
 [ext_resource type="Texture2D" uid="uid://5vb373nbxgv1" path="res://Assets/Sprites/sprite_sky.png" id="2_kip5k"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d3l22811y34gf" path="res://Scenes/cpu.tscn" id="6_ch2sn"]
 [ext_resource type="PackedScene" uid="uid://cq6qrrdwgxiid" path="res://Scenes/hud.tscn" id="8_r70bt"]
 [ext_resource type="Script" path="res://Scripts/BallTrappedDetection.gd" id="9_6blkq"]
+[ext_resource type="PackedScene" uid="uid://c6jorspf5q03q" path="res://Scenes/shake_camera.tscn" id="10_gb3ao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m707d"]
 size = Vector2(1150, 32)
@@ -24,6 +25,8 @@ script = ExtResource("1_juicp")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
+position = Vector2(-10, -9)
+scale = Vector2(1.02257, 1.02932)
 texture = ExtResource("2_kip5k")
 centered = false
 
@@ -102,6 +105,8 @@ shape = SubResource("RectangleShape2D_a6f1b")
 [node name="BallDetectionTimer" type="Timer" parent="BallTrappedDetection"]
 wait_time = 0.5
 one_shot = true
+
+[node name="ShakeCamera" parent="." instance=ExtResource("10_gb3ao")]
 
 [connection signal="input_event" from="screen_top" to="Ball" method="_on_screen_top_input_event"]
 [connection signal="input_event" from="screen_bottom" to="Ball" method="_on_screen_bottom_input_event"]

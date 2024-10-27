@@ -3,7 +3,6 @@ extends Area2D
 signal ball_trapped
 
 @onready var main = $".."
-@onready var hud = get_node("res://Scenes/hud.tscn")
 
 func _on_body_entered(body):
 	if body == $"../Ball":

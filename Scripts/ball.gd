@@ -44,7 +44,8 @@ func _physics_process(delta):
 			if (collider == $"../Player1" or collider == $"../Player2" or collider == $"../CPU") and is_front(collision):
 				speed += acceleration
 				rotation_speed += initial_rotation_speed
-				direction = new_direction(collider)
+				direction = find_new_direction(collider)
+				$"../ShakeCamera".add_trauma(0.2)
 				if collider == $"../CPU":
 					cpu_collision.emit()
 			else:
@@ -57,7 +58,7 @@ func random_direction():
 	direction.normalized()
 
 # get the new direction of the ball according to the bounce
-func new_direction(collider):
+func find_new_direction(collider):
 	var distance = position.y - collider.position.y
 	var new_direction := Vector2()
 	

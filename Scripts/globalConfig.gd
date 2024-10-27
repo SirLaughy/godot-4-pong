@@ -17,9 +17,9 @@ func _ready():
 func load_config():
 	if FileAccess.file_exists(SAVEFILE):
 		var file = FileAccess.open(SAVEFILE, FileAccess.READ)
-		sfx_volume = file.get_32()
-		music_volume = file.get_32()
-		screen_shake_level = file.get_32()
+		sfx_volume = file.get_var(sfx_volume)
+		music_volume = file.get_var(music_volume)
+		screen_shake_level = file.get_var(screen_shake_level)
 	else:
 		sfx_volume = 100
 		music_volume = 100
@@ -27,7 +27,7 @@ func load_config():
 	
 func save_config():
 	var file = FileAccess.open(SAVEFILE, FileAccess.WRITE)
-	file.store_32(sfx_volume)
-	file.store_32(music_volume)
-	file.store_32(screen_shake_level)
+	file.store_var(sfx_volume)
+	file.store_var(music_volume)
+	file.store_var(screen_shake_level)
 	file = null
