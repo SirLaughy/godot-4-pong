@@ -16,13 +16,12 @@ func _process(delta):
 		shake()
 		
 func shake():
-	var config = Playerconfigs.screen_shake_level / 100
 	var amount = pow(trauma, trauma_power)
-	rotation = (max_roll * amount * randf_range(-1, 1)) * config
-	offset.x = (max_offset.x * amount * randf_range(-1, 1)) * config
-	offset.y = (max_offset.y * amount * randf_range(-1, 1)) * config
+	rotation = (max_roll * amount * randf_range(-1, 1))
+	offset.x = (max_offset.x * amount * randf_range(-1, 1))
+	offset.y = (max_offset.y * amount * randf_range(-1, 1))
 	
 func add_trauma(amount : float):
-		trauma = min(amount, 1.0)
+		trauma = min(amount * GlobalConfigs.screen_shake_level, 1.0)
 	
 	

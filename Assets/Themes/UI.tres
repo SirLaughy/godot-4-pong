@@ -1,0 +1,105 @@
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://fifqueo1ohan"]
+
+[ext_resource type="FontFile" uid="uid://ccfqm3vdf1qg" path="res://Assets/Fonts/AmaticSC-Regular.ttf" id="1_84w28"]
+[ext_resource type="Texture2D" uid="uid://dwoauwkbblyr4" path="res://Assets/Sprites/sprite_button_hovered.png" id="2_bcb31"]
+[ext_resource type="Texture2D" uid="uid://b5lvc3e6wtu8v" path="res://Assets/Sprites/sprite_button_default.png" id="3_jqme7"]
+[ext_resource type="Texture2D" uid="uid://cfrl45whp332r" path="res://Assets/Sprites/sprite_button_pressed.png" id="4_i0m18"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwoyw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2que0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 18.0
+expand_margin_top = 2.0
+expand_margin_right = 18.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c0hok"]
+texture = ExtResource("2_bcb31")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7fpst"]
+texture = ExtResource("3_jqme7")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d4vd5"]
+texture = ExtResource("4_i0m18")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+expand_margin_left = 16.0
+expand_margin_right = 16.0
+
+[resource]
+default_font = ExtResource("1_84w28")
+default_font_size = 48
+BoxContainer/constants/separation = 48
+Button/colors/font_color = Color(0.490196, 0.309804, 0.164706, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.737255, 0.521569, 0.32549, 1)
+Button/colors/font_hover_pressed_color = Color(0.207843, 0.117647, 0.0666667, 1)
+Button/colors/font_outline_color = Color(0.396078, 0.231373, 0.145098, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("1_84w28")
+Button/styles/disabled = SubResource("StyleBoxFlat_fwoyw")
+Button/styles/focus = SubResource("StyleBoxFlat_2que0")
+Button/styles/hover = SubResource("StyleBoxTexture_c0hok")
+Button/styles/normal = SubResource("StyleBoxTexture_7fpst")
+Button/styles/pressed = SubResource("StyleBoxTexture_d4vd5")
+Label/colors/font_color = Color(0.439216, 0.258824, 0.0784314, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/outline_size = 1
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_84w28")

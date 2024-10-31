@@ -17,8 +17,11 @@ config/icon="res://Assets/Sprites/icon.svg"
 
 [autoload]
 
-Globals="*res://Scripts/globals.gd"
-Playerconfigs="*res://Scripts/globalConfig.gd"
+GlobalConfigs="*res://Scripts/Globals/GlobalConfig.gd"
+GlobalEnums="*res://Scripts/Globals/GlobalEnums.gd"
+GlobalSignals="*res://Scripts/Globals/GlobalSignals.gd"
+GlobalVariables="*res://Scripts/Globals/GlobalVariables.gd"
+SceneManager="*res://Scripts/Globals/SceneManager.gd"
 
 [display]
 

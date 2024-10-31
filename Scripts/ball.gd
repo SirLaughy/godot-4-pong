@@ -8,7 +8,6 @@ signal cpu_collision
 
 #  onready
 @onready var main = get_parent()
-@onready var screen_size = get_viewport_rect().size
 
 # consts
 const MAX_Y_VECTOR = 0.6
@@ -27,7 +26,7 @@ var center = Vector2(round(width/2), round(height/2))
 
 func _physics_process(delta):
 	# check that game is in progress
-	if main.game_status == Global.GameStatus.IN_PROGRESS:
+	if GlobalVariables.game_status == GlobalEnums.GameStatus.RUNNING:
 	
 		# move in a straight direction and check for collisions
 		var collision = move_and_collide(direction * speed * delta)
@@ -45,6 +44,7 @@ func _physics_process(delta):
 				speed += acceleration
 				rotation_speed += initial_rotation_speed
 				direction = find_new_direction(collider)
+				# default trauma 0.2
 				$"../ShakeCamera".add_trauma(0.2)
 				if collider == $"../CPU":
 					cpu_collision.emit()

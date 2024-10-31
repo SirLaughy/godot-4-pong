@@ -6,7 +6,7 @@ extends "res://Scripts/paddle.gd"
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# only move if game is in progress
-	if main.game_status == Global.GameStatus.IN_PROGRESS:
+	if GlobalVariables.game_status == GlobalEnums.GameStatus.RUNNING:
 		move(delta)
 
 # move player 1 paddle up/down according to input

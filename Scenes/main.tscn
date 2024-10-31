@@ -60,17 +60,21 @@ position = Vector2(1164, 324)
 shape = SubResource("RectangleShape2D_xyi36")
 
 [node name="Ball" parent="." instance=ExtResource("3_2tlln")]
+visible = false
 position = Vector2(232, 360)
 
 [node name="Player1" parent="." instance=ExtResource("4_no0er")]
+visible = false
 z_index = 0
 position = Vector2(136, 184)
 
 [node name="Player2" parent="." instance=ExtResource("5_xe6j5")]
+visible = false
 z_index = 0
 position = Vector2(240, 184)
 
 [node name="CPU" parent="." instance=ExtResource("6_ch2sn")]
+visible = false
 z_index = 0
 position = Vector2(336, 192)
 

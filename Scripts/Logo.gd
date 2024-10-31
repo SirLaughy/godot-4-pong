@@ -51,3 +51,8 @@ func _on_logo_timer_timeout():
 
 	$LogoTimer.wait_time = randf_range(2.5, 3.5)
 	$LogoTimer.start()
+
+
+func _on_visibility_changed():
+	if is_visible():
+		reset_logo()

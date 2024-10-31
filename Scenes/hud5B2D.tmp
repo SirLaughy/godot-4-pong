@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://ccfqm3vdf1qg" path="res://Assets/Fonts/AmaticSC-Regular.ttf" id="2_e8m4c"]
 [ext_resource type="Texture2D" uid="uid://baf63n7ipek5i" path="res://Assets/Sprites/sprite_logo.png" id="2_h3cku"]
 [ext_resource type="Script" path="res://Scripts/Logo.gd" id="3_tfvbx"]
-[ext_resource type="Theme" uid="uid://fifqueo1ohan" path="res://Assets/Themes/UI.tres" id="4_pix71"]
+[ext_resource type="Theme" uid="uid://fifqueo1ohan" path="res://Assets/Themes/button_theme.tres" id="4_pix71"]
 [ext_resource type="Script" path="res://Scripts/GUIBackground.gd" id="5_7e58c"]
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="5_ii3dr"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="6_jh8sb"]
@@ -14,90 +14,81 @@
 follow_viewport_enabled = true
 script = ExtResource("1_m37b5")
 
-[node name="MainMenu" type="CanvasLayer" parent="."]
+[node name="MainMenu" type="CanvasGroup" parent="."]
 script = ExtResource("5_ii3dr")
 
 [node name="New Game" type="Button" parent="MainMenu"]
-anchors_preset = 8
+visible = false
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -67.0
-offset_top = 96.0
-offset_right = 67.0
-offset_bottom = 161.0
+anchor_bottom = 1.0
+offset_left = 496.0
+offset_top = 428.0
+offset_right = 672.0
+offset_bottom = 493.0
 grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+grow_vertical = 0
 theme = ExtResource("4_pix71")
+theme_override_fonts/font = ExtResource("2_e8m4c")
 theme_override_font_sizes/font_size = 48
 text = "New Game"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu"]
-anchors_preset = 8
+[node name="Quit" type="Button" parent="MainMenu"]
+visible = false
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = 176.0
-offset_right = 152.0
-offset_bottom = 241.0
+anchor_bottom = 1.0
+offset_left = 497.0
+offset_top = 508.0
+offset_right = 671.0
+offset_bottom = 573.0
 grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_pix71")
-
-[node name="Quit" type="Button" parent="MainMenu/HBoxContainer"]
-layout_mode = 2
+grow_vertical = 0
 theme = ExtResource("4_pix71")
 theme_override_fonts/font = ExtResource("2_e8m4c")
 theme_override_font_sizes/font_size = 48
 text = "Quit Game"
 
-[node name="OptionsButton" type="Button" parent="MainMenu/HBoxContainer"]
-layout_mode = 2
+[node name="OptionsButton" type="Button" parent="MainMenu"]
+offset_left = 312.0
+offset_top = 432.0
+offset_right = 486.0
+offset_bottom = 503.0
 theme = ExtResource("4_pix71")
 text = "Options"
 
-[node name="GameMode" type="CanvasLayer" parent="MainMenu"]
+[node name="GameMode" type="CanvasGroup" parent="MainMenu"]
+
+[node name="Singleplayer" type="Button" parent="MainMenu/GameMode"]
 visible = false
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/GameMode"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -189.5
-offset_top = 96.0
-offset_right = 189.5
-offset_bottom = 161.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 344.0
+offset_top = 424.0
+offset_right = 541.0
+offset_bottom = 493.0
 theme = ExtResource("4_pix71")
-
-[node name="Singleplayer" type="Button" parent="MainMenu/GameMode/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("4_pix71")
+theme_override_fonts/font = ExtResource("2_e8m4c")
+theme_override_font_sizes/font_size = 48
 text = "Singleplayer"
 
-[node name="Multiplayer" type="Button" parent="MainMenu/GameMode/HBoxContainer"]
-layout_mode = 2
+[node name="Multiplayer" type="Button" parent="MainMenu/GameMode"]
+visible = false
+offset_left = 632.0
+offset_top = 424.0
+offset_right = 818.0
+offset_bottom = 493.0
 theme = ExtResource("4_pix71")
 theme_override_fonts/font = ExtResource("2_e8m4c")
 theme_override_font_sizes/font_size = 48
 text = "Multiplayer"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu"]
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Scores" type="CanvasGroup" parent="."]
-visible = false
 
 [node name="Score1" type="Label" parent="Scores"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -111,6 +102,7 @@ theme_override_font_sizes/font_size = 128
 text = "0"
 
 [node name="Score2" type="Label" parent="Scores"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -124,10 +116,11 @@ theme_override_font_sizes/font_size = 128
 text = "0"
 
 [node name="GUIBackground" type="ColorRect" parent="."]
-color = Color(0.741176, 0.741176, 0.741176, 0.588235)
+color = Color(0.741176, 0.741176, 0.741176, 0.329412)
 script = ExtResource("5_7e58c")
 
 [node name="Logo" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(584, 256)
 rotation = -0.120428
 texture = ExtResource("2_h3cku")
@@ -137,6 +130,7 @@ script = ExtResource("3_tfvbx")
 autostart = true
 
 [node name="Message" type="Label" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -159,40 +153,47 @@ wait_time = 3.0
 one_shot = true
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("6_jh8sb")
 
-[node name="GridContainer" type="GridContainer" parent="PauseMenu"]
-anchors_preset = 8
+[node name="EndGame" type="Button" parent="PauseMenu"]
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -220.5
-offset_top = 126.0
-offset_right = 220.5
-offset_bottom = 191.0
+anchor_bottom = 1.0
+offset_left = 112.0
+offset_top = -216.0
+offset_right = 288.0
+offset_bottom = -151.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/h_separation = 48
-columns = 3
-
-[node name="EndGame" type="Button" parent="PauseMenu/GridContainer"]
-layout_mode = 2
+grow_vertical = 0
 theme = ExtResource("4_pix71")
 theme_override_fonts/font = ExtResource("2_e8m4c")
 theme_override_font_sizes/font_size = 48
 text = "End Game"
 
-[node name="ResumeGame" type="Button" parent="PauseMenu/GridContainer"]
-layout_mode = 2
+[node name="ResumeGame" type="Button" parent="PauseMenu"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -216.0
+offset_right = 97.0
+offset_bottom = -147.0
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("4_pix71")
 theme_override_fonts/font = ExtResource("2_e8m4c")
 theme_override_font_sizes/font_size = 48
 text = "Resume"
 
-[node name="OptionsButton" type="Button" parent="PauseMenu/GridContainer"]
-layout_mode = 2
+[node name="OptionsButton" type="Button" parent="PauseMenu"]
+offset_left = 312.0
+offset_top = 432.0
+offset_right = 486.0
+offset_bottom = 503.0
 theme = ExtResource("4_pix71")
 text = "Options"
 
@@ -200,111 +201,176 @@ text = "Options"
 visible = false
 script = ExtResource("6_vo8by")
 
-[node name="GridContainer" type="VBoxContainer" parent="OptionsMenu"]
+[node name="Options" type="Label" parent="OptionsMenu"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.0
+offset_right = 71.0
+offset_bottom = 82.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_pix71")
+text = "Options"
+
+[node name="Controls" type="Button" parent="OptionsMenu"]
+offset_left = 512.0
+offset_top = 88.0
+offset_right = 640.0
+offset_bottom = 144.0
+theme = ExtResource("4_pix71")
+text = "Controls"
+
+[node name="SFXVolume" type="Label" parent="OptionsMenu"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -103.5
-offset_top = -248.5
-offset_right = 103.5
-offset_bottom = 248.5
+offset_left = -20.0
+offset_top = -174.0
+offset_right = 20.0
+offset_bottom = -133.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Options" type="Label" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_pix71")
-text = "Options"
-
-[node name="Controls" type="Button" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
-theme = ExtResource("4_pix71")
-text = "Controls"
-
-[node name="SFXVolume" type="Label" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
 theme = ExtResource("4_pix71")
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 32
 text = "SFX"
 horizontal_alignment = 1
 
-[node name="SFXSlider" type="HSlider" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
+[node name="SFXSlider" type="HSlider" parent="OptionsMenu/SFXVolume"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 12.0
+offset_right = 88.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_pix71")
 max_value = 1.0
 step = 0.1
 value = 1.0
 tick_count = 10
 
-[node name="MusicVolume" type="Label" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
+[node name="MusicVolume" type="Label" parent="OptionsMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -116.0
+offset_right = 28.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_pix71")
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 32
 text = "Music"
 horizontal_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
+[node name="MusicSlider" type="HSlider" parent="OptionsMenu/MusicVolume"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 12.0
+offset_right = 88.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_pix71")
 max_value = 1.0
 step = 0.1
 value = 1.0
 tick_count = 10
 
-[node name="ScreenShake" type="Label" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
+[node name="ScreenShake" type="Label" parent="OptionsMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -52.0
+offset_right = 65.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_pix71")
 theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 32
 text = "Screen Shake"
 horizontal_alignment = 1
 
-[node name="ScreenShakeSlider" type="HSlider" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
+[node name="ScreenShakeSlider" type="HSlider" parent="OptionsMenu/ScreenShake"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.5
+offset_top = 11.5
+offset_right = 81.5
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("4_pix71")
 max_value = 1.0
 step = 0.1
 value = 1.0
 tick_count = 10
 
-[node name="AudioChannelMenu" type="MenuButton" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
+[node name="AudioChannelMenu" type="MenuButton" parent="OptionsMenu"]
+offset_left = 512.0
+offset_top = 334.0
+offset_right = 651.0
+offset_bottom = 379.0
 theme = ExtResource("4_pix71")
 theme_type_variation = &"FlatMenuButton"
 keep_pressed_outside = true
 text = "Audio Channel"
 
-[node name="BackButton" type="Button" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
+[node name="BackButton" type="Button" parent="OptionsMenu"]
+offset_left = 528.0
+offset_top = 456.0
+offset_right = 632.0
+offset_bottom = 512.0
 theme = ExtResource("4_pix71")
 text = "Back"
 
-[node name="ApplyChangesButton" type="Button" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
+[node name="ApplyChangesButton" type="Button" parent="OptionsMenu"]
+offset_left = 504.0
+offset_top = 392.0
+offset_right = 656.0
+offset_bottom = 448.0
 theme = ExtResource("4_pix71")
 text = "Apply Changes"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu/GridContainer"]
-layout_mode = 2
-
 [connection signal="visibility_changed" from="MainMenu" to="MainMenu" method="_on_visibility_changed"]
 [connection signal="pressed" from="MainMenu/New Game" to="MainMenu" method="_on_new_game_pressed"]
-[connection signal="pressed" from="MainMenu/HBoxContainer/Quit" to="MainMenu" method="_on_quit_pressed"]
-[connection signal="pressed" from="MainMenu/HBoxContainer/OptionsButton" to="MainMenu" method="_on_options_button_pressed"]
-[connection signal="pressed" from="MainMenu/GameMode/HBoxContainer/Singleplayer" to="MainMenu" method="_on_singleplayer_pressed"]
-[connection signal="pressed" from="MainMenu/GameMode/HBoxContainer/Multiplayer" to="MainMenu" method="_on_multiplayer_pressed"]
+[connection signal="pressed" from="MainMenu/Quit" to="MainMenu" method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenu/OptionsButton" to="MainMenu" method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenu/GameMode/Singleplayer" to="MainMenu" method="_on_singleplayer_pressed"]
+[connection signal="pressed" from="MainMenu/GameMode/Multiplayer" to="MainMenu" method="_on_multiplayer_pressed"]
 [connection signal="visibility_changed" from="Logo" to="Logo" method="_on_visibility_changed"]
 [connection signal="timeout" from="Logo/LogoTimer" to="Logo" method="_on_logo_timer_timeout"]
 [connection signal="timeout" from="Message/MessageTimer" to="." method="_on_message_timer_timeout"]
 [connection signal="visibility_changed" from="PauseMenu" to="PauseMenu" method="_on_visibility_changed"]
-[connection signal="pressed" from="PauseMenu/GridContainer/EndGame" to="PauseMenu" method="_on_end_game_pressed"]
-[connection signal="pressed" from="PauseMenu/GridContainer/ResumeGame" to="PauseMenu" method="_on_resume_game_pressed"]
-[connection signal="pressed" from="PauseMenu/GridContainer/OptionsButton" to="PauseMenu" method="_on_options_button_pressed"]
+[connection signal="pressed" from="PauseMenu/EndGame" to="PauseMenu" method="_on_end_game_pressed"]
+[connection signal="pressed" from="PauseMenu/ResumeGame" to="PauseMenu" method="_on_resume_game_pressed"]
+[connection signal="pressed" from="PauseMenu/OptionsButton" to="PauseMenu" method="_on_options_button_pressed"]
 [connection signal="visibility_changed" from="OptionsMenu" to="OptionsMenu" method="_on_visibility_changed"]
-[connection signal="pressed" from="OptionsMenu/GridContainer/BackButton" to="OptionsMenu" method="_on_back_button_pressed"]
-[connection signal="pressed" from="OptionsMenu/GridContainer/ApplyChangesButton" to="OptionsMenu" method="_on_apply_changes_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/BackButton" to="OptionsMenu" method="_on_back_button_pressed"]
+[connection signal="pressed" from="OptionsMenu/ApplyChangesButton" to="OptionsMenu" method="_on_apply_changes_button_pressed"]

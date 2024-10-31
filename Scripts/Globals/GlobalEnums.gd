@@ -6,10 +6,13 @@ class_name Global
 enum GameMode{SINGLEPLAYER, MULTIPLAYER}
 
 # the status the game is in
-enum GameStatus{IN_PROGRESS, ENDED, PAUSED}
+enum GameStatus{RUNNING, STOPPED}
 
 # the scaling direction
 enum InOutDirection{IN, OUT}
 
 # horizontal direction	
 enum Direction{LEFT, RIGHT}
+
+# the game scene
+enum GameScenes{MAIN_MENU, PAUSE_MENU, OPTIONS_MENU, GAME_SCENE}
