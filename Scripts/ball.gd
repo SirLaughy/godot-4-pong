@@ -1,8 +1,5 @@
 extends CharacterBody2D
 
-# signals
-signal cpu_collision
-
 # export
 @export var initial_speed = 600
 
@@ -23,6 +20,9 @@ var width = 64
 var height = 64
 var center = Vector2(round(width/2), round(height/2))
 
+func _process(delta):
+	GlobalVariables.ball_position = position
+
 
 func _physics_process(delta):
 	# check that game is in progress
@@ -40,14 +40,12 @@ func _physics_process(delta):
 		if collision:
 			collider = collision.get_collider()
 			# if collision with player increase acceleration and rotation speed as well as changing angle of bounce depending on the part of the paddle it collides with
-			if (collider == $"../Player1" or collider == $"../Player2" or collider == $"../CPU") and is_front(collision):
+			if (collider == $"../Paddle1" or collider == $"../Paddle2") and is_front(collision):
 				speed += acceleration
 				rotation_speed += initial_rotation_speed
 				direction = find_new_direction(collider)
 				# default trauma 0.2
 				$"../ShakeCamera".add_trauma(0.2)
-				if collider == $"../CPU":
-					cpu_collision.emit()
 			else:
 				direction = direction.bounce(collision.get_normal())
 		

@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://5vb373nbxgv1" path="res://Assets/Sprites/sprite_sky.png" id="2_kip5k"]
 [ext_resource type="PackedScene" uid="uid://m0m2lor6qgmg" path="res://Scenes/ball.tscn" id="3_2tlln"]
 [ext_resource type="Texture2D" uid="uid://ccje43xsg0ivf" path="res://Assets/Sprites/meaasure lines.png" id="3_qyb5e"]
-[ext_resource type="PackedScene" uid="uid://nitvywqem5g3" path="res://Scenes/player_1.tscn" id="4_no0er"]
-[ext_resource type="PackedScene" uid="uid://cq7js5pgx5p05" path="res://Scenes/player_2.tscn" id="5_xe6j5"]
-[ext_resource type="PackedScene" uid="uid://d3l22811y34gf" path="res://Scenes/cpu.tscn" id="6_ch2sn"]
+[ext_resource type="PackedScene" uid="uid://pcd7t2ql1n7g" path="res://Scenes/paddle.tscn" id="4_m0r5h"]
+[ext_resource type="Resource" uid="uid://bp5f24rf3hfir" path="res://Resources/Player1.tres" id="5_jcv5k"]
+[ext_resource type="Resource" uid="uid://b5xpfrnidwq2u" path="res://Resources/Player2.tres" id="6_1nfjo"]
 [ext_resource type="PackedScene" uid="uid://cq6qrrdwgxiid" path="res://Scenes/hud.tscn" id="8_r70bt"]
 [ext_resource type="Script" path="res://Scripts/BallTrappedDetection.gd" id="9_6blkq"]
 [ext_resource type="PackedScene" uid="uid://c6jorspf5q03q" path="res://Scenes/shake_camera.tscn" id="10_gb3ao"]
@@ -59,28 +59,19 @@ shape = SubResource("RectangleShape2D_xyi36")
 position = Vector2(1164, 324)
 shape = SubResource("RectangleShape2D_xyi36")
 
+[node name="Paddle1" parent="." instance=ExtResource("4_m0r5h")]
+visible = false
+position = Vector2(278, 279)
+paddle = ExtResource("5_jcv5k")
+
+[node name="Paddle2" parent="." instance=ExtResource("4_m0r5h")]
+visible = false
+position = Vector2(190, 277)
+paddle = ExtResource("6_1nfjo")
+
 [node name="Ball" parent="." instance=ExtResource("3_2tlln")]
 visible = false
 position = Vector2(232, 360)
-
-[node name="Player1" parent="." instance=ExtResource("4_no0er")]
-visible = false
-z_index = 0
-position = Vector2(136, 184)
-
-[node name="Player2" parent="." instance=ExtResource("5_xe6j5")]
-visible = false
-z_index = 0
-position = Vector2(240, 184)
-
-[node name="CPU" parent="." instance=ExtResource("6_ch2sn")]
-visible = false
-z_index = 0
-position = Vector2(336, 192)
-
-[node name="BallCollisionTimer" type="Timer" parent="CPU"]
-wait_time = 3.0
-one_shot = true
 
 [node name="BallTimer" type="Timer" parent="."]
 one_shot = true
@@ -117,8 +108,6 @@ one_shot = true
 [connection signal="body_entered" from="screen_left" to="." method="_on_screen_left_body_entered"]
 [connection signal="area_entered" from="screen_right" to="Ball" method="_on_screen_right_area_entered"]
 [connection signal="body_entered" from="screen_right" to="." method="_on_screen_right_body_entered"]
-[connection signal="cpu_collision" from="Ball" to="CPU" method="_on_ball_cpu_collision"]
-[connection signal="timeout" from="CPU/BallCollisionTimer" to="CPU" method="_on_ball_collision_timer_timeout"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
 [connection signal="ball_trapped" from="BallTrappedDetection" to="HUD" method="_on_ball_trapped_detection_ball_trapped"]
 [connection signal="body_entered" from="BallTrappedDetection" to="BallTrappedDetection" method="_on_body_entered"]

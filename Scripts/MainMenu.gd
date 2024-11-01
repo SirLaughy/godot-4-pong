@@ -6,7 +6,6 @@ func _ready():
 func scene_mainMenu():
 	show()
 	$"../Logo".show()
-	$"../Message".show()
 	$"../Scores".show()
 	$"New Game".show()
 	GlobalVariables.game_status = GlobalEnums.GameStatus.STOPPED

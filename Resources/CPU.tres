@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Paddle" load_steps=2 format=3 uid="uid://b4s4mowlrljsl"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/paddle_resource.gd" id="1_3nh3l"]
+
+[resource]
+script = ExtResource("1_3nh3l")
+side = 1
+controller = 2

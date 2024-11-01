@@ -1,10 +1,9 @@
 extends Node2D
 
 #onready
-@onready var player1 = $Player1
-@onready var player2 = $Player2
-@onready var cpu = $CPU
 @onready var ball = $Ball
+@onready var paddle1 = $Paddle1
+@onready var paddle2 = $Paddle2
 
 @onready var hud = $HUD
 
@@ -15,6 +14,7 @@ func _ready():
 	GlobalSignals.New_Game.connect(new_game)
 	GlobalConfigs.screen_size = get_viewport_rect().size
 	SceneManager.set_scene()
+	new_round()
 
 # checking for pause button press
 func _input(_event):
@@ -32,30 +32,26 @@ func _input(_event):
 				SceneManager.pop_stack()
 
 func new_game():
+	var resource
+	match GlobalVariables.game_mode:
+		GlobalEnums.GameMode.SINGLEPLAYER:
+			resource = load("res://Resources/CPU.tres")
+		GlobalEnums.GameMode.MULTIPLAYER:
+			resource = load("res://Resources/Player2.tres")
+	paddle2.paddle = resource
 	new_round()
 
 # reset positions of paddle and ball for a new round
 func new_round():
-	player2.hide()
-	cpu.hide()
-	ball.speed = ball.initial_speed	
-	player1.position = Vector2(50 + player1.center.x, GlobalConfigs.screen_size.y / 2)
+	ball.speed = ball.initial_speed
+	paddle1.position = Vector2(50 + paddle1.center.x, GlobalConfigs.screen_size.y / 2)
 	ball.position = Vector2(GlobalConfigs.screen_size.x / 2, GlobalConfigs.screen_size.y/2)
 	ball.rotation_speed = ball.initial_rotation_speed
 	
-	#if multiplayer reset player 2 position
-	if GlobalVariables.game_mode == GlobalEnums.GameMode.MULTIPLAYER:
-		player2.position = Vector2(GlobalConfigs.screen_size.x - 50 - player2.center.x, GlobalConfigs.screen_size.y / 2)
-		cpu.position = Vector2(GlobalConfigs.screen_size.x * 2, 0)
-		player2.show()
+	paddle2.position = Vector2(GlobalConfigs.screen_size.x - 50 - paddle2.center.x, GlobalConfigs.screen_size.y / 2)
 
-#if singleplayer reset CPU position
-	else:
-		cpu.position = Vector2(GlobalConfigs.screen_size.x - 50 - cpu.center.x, GlobalConfigs.screen_size.y / 2)
-		player2.position = Vector2(GlobalConfigs.screen_size.x * 2, 0)
-		cpu.show()
-		cpu.ball_collisions = 0
-	player1.show()
+	paddle1.show()
+	paddle2.show()
 	ball.direction = Vector2.ZERO
 	ball.show()
 	$BallTimer.start()
@@ -83,6 +79,7 @@ func game_over():
 		$HUD/Message.show()
 	GlobalVariables.game_status = GlobalEnums.GameStatus.STOPPED
 	SceneManager.set_stack(GlobalEnums.GameScenes.MAIN_MENU)
+	new_round()
 
 # return who is the winner
 func check_winner():

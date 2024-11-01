@@ -16,3 +16,7 @@ enum Direction{LEFT, RIGHT}
 
 # the game scene
 enum GameScenes{MAIN_MENU, PAUSE_MENU, OPTIONS_MENU, GAME_SCENE}
+
+enum PaddleSide{LEFT, RIGHT}
+
+enum PaddleController{PLAYER_1, PLAYER_2, CPU}
