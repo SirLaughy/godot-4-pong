@@ -12,6 +12,7 @@ extends Node2D
 func _ready():
 	GlobalSignals.scene_gameScene.connect(scene_gameScene)
 	GlobalSignals.New_Game.connect(new_game)
+	GlobalSignals.scene_mainMenu.connect(scene_mainMenu)
 	GlobalConfigs.screen_size = get_viewport_rect().size
 	SceneManager.set_scene()
 	new_round()
@@ -32,13 +33,11 @@ func _input(_event):
 				SceneManager.pop_stack()
 
 func new_game():
-	var resource
 	match GlobalVariables.game_mode:
 		GlobalEnums.GameMode.SINGLEPLAYER:
-			resource = load("res://Resources/CPU.tres")
+			paddle2.controller = GlobalEnums.PaddleController.CPU
 		GlobalEnums.GameMode.MULTIPLAYER:
-			resource = load("res://Resources/Player2.tres")
-	paddle2.paddle = resource
+			paddle2.controller = GlobalEnums.PaddleController.PLAYER_2
 	new_round()
 
 # reset positions of paddle and ball for a new round
@@ -79,7 +78,6 @@ func game_over():
 		$HUD/Message.show()
 	GlobalVariables.game_status = GlobalEnums.GameStatus.STOPPED
 	SceneManager.set_stack(GlobalEnums.GameScenes.MAIN_MENU)
-	new_round()
 
 # return who is the winner
 func check_winner():
@@ -103,3 +101,6 @@ func check_score():
 
 func scene_gameScene():
 	GlobalVariables.game_status = GlobalEnums.GameStatus.RUNNING
+
+func scene_mainMenu() -> void:
+	new_round()

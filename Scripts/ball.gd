@@ -20,10 +20,6 @@ var width = 64
 var height = 64
 var center = Vector2(round(width/2), round(height/2))
 
-func _process(delta):
-	GlobalVariables.ball_position = position
-
-
 func _physics_process(delta):
 	# check that game is in progress
 	if GlobalVariables.game_status == GlobalEnums.GameStatus.RUNNING:

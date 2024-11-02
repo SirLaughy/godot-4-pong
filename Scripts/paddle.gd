@@ -1,6 +1,7 @@
 extends StaticBody2D
 
-@export var paddle : Paddle
+@export var side : GlobalEnums.PaddleSide
+@export var controller : GlobalEnums.PaddleController
 
 @onready var ball = $"../Ball"
 
@@ -12,7 +13,7 @@ var height = 192
 var center = Vector2(round(width/2), round(height/2))
 
 func _ready():
-	if paddle:
+	if side:
 		set_side()
 
 func _process(delta):
@@ -29,7 +30,7 @@ func move_down(delta):
 	position.y += paddle_speed * delta
 
 func set_side() -> void:
-	match paddle.side:
+	match side:
 		GlobalEnums.PaddleSide.LEFT:
 			$Sprite2D.flip_h = false
 			$CollisionPolygon2D.rotation = 0
@@ -38,7 +39,7 @@ func set_side() -> void:
 			$CollisionPolygon2D.rotation = deg_to_rad(180)
 
 func move(delta) -> void:
-	match paddle.controller:
+	match controller:
 		GlobalEnums.PaddleController.PLAYER_1:
 			if Input.is_action_pressed("player1_up"):
 				move_up(delta)
