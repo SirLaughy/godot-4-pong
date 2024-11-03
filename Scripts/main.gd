@@ -15,11 +15,10 @@ func _ready():
 	GlobalSignals.scene_mainMenu.connect(scene_mainMenu)
 	GlobalConfigs.screen_size = get_viewport_rect().size
 	SceneManager.set_scene()
-	new_round()
 
 # checking for pause button press
 func _input(_event):
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("player1_pause") || Input.is_action_just_pressed("player2_pause"):
 		match SceneManager.current_scene:
 			GlobalEnums.GameScenes.MAIN_MENU:
 				pass
