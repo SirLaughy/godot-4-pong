@@ -1,14 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dces7q46jng7a"]
+[gd_scene load_steps=4 format=3 uid="uid://dces7q46jng7a"]
 
+[ext_resource type="Script" path="res://Scripts/keybind_remap.gd" id="1_a5fxe"]
 [ext_resource type="Theme" uid="uid://fifqueo1ohan" path="res://Assets/Themes/UI.tres" id="1_b1ipa"]
+[ext_resource type="Script" path="res://Scripts/Control_Bind_Button.gd" id="3_shlpa"]
 
-[node name="Keybind_Remap" type="Control"]
+[node name="Controls_Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_a5fxe")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -18,9 +21,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 128
-theme_override_constants/margin_top = 8
+theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 128
 theme_override_constants/margin_bottom = 32
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -62,6 +69,17 @@ theme = ExtResource("1_b1ipa")
 text = "Up"
 alignment = 0
 icon_alignment = 1
+script = ExtResource("3_shlpa")
+
+[node name="Label_Up_P1" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_P1_Up"]
+layout_mode = 2
+offset_left = 146.0
+offset_right = 474.0
+offset_bottom = 61.0
+mouse_filter = 1
+theme = ExtResource("1_b1ipa")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button_P1_Down" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(480, 64)
@@ -70,6 +88,17 @@ theme = ExtResource("1_b1ipa")
 text = "Down"
 alignment = 0
 icon_alignment = 1
+script = ExtResource("3_shlpa")
+
+[node name="Label_Down_P1" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_P1_Down"]
+layout_mode = 0
+offset_left = 146.0
+offset_right = 474.0
+offset_bottom = 63.0
+mouse_filter = 1
+theme = ExtResource("1_b1ipa")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button_P1_Pause" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(480, 64)
@@ -78,6 +107,18 @@ theme = ExtResource("1_b1ipa")
 text = "Pause"
 alignment = 0
 icon_alignment = 1
+script = ExtResource("3_shlpa")
+
+[node name="Label_Pause_P1" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_P1_Pause"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 1.0
+offset_right = 474.0
+offset_bottom = 64.0
+mouse_filter = 1
+theme = ExtResource("1_b1ipa")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -101,6 +142,18 @@ theme = ExtResource("1_b1ipa")
 text = "Up"
 alignment = 0
 icon_alignment = 1
+script = ExtResource("3_shlpa")
+
+[node name="Label_Up_P2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button_P2_Up"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 2.0
+offset_right = 470.0
+offset_bottom = 65.0
+mouse_filter = 1
+theme = ExtResource("1_b1ipa")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button_P2_Down" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(480, 64)
@@ -109,6 +162,17 @@ theme = ExtResource("1_b1ipa")
 text = "Down"
 alignment = 0
 icon_alignment = 1
+script = ExtResource("3_shlpa")
+
+[node name="Label_Down_P2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button_P2_Down"]
+layout_mode = 0
+offset_left = 142.0
+offset_right = 470.0
+offset_bottom = 63.0
+mouse_filter = 1
+theme = ExtResource("1_b1ipa")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="Button_P2_Pause" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(480, 64)
@@ -117,6 +181,18 @@ theme = ExtResource("1_b1ipa")
 text = "Pause"
 alignment = 0
 icon_alignment = 1
+script = ExtResource("3_shlpa")
+
+[node name="Label_Pause_P2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button_P2_Pause"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 1.0
+offset_right = 470.0
+offset_bottom = 64.0
+mouse_filter = 1
+theme = ExtResource("1_b1ipa")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -132,74 +208,5 @@ custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 text = "Back"
 
-[node name="Label_Up_P1" type="Label" parent="."]
-layout_mode = 0
-offset_left = 218.0
-offset_top = 253.0
-offset_right = 546.0
-offset_bottom = 316.0
-mouse_filter = 1
-theme = ExtResource("1_b1ipa")
-text = "W"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Label_Down_P1" type="Label" parent="."]
-layout_mode = 0
-offset_left = 218.0
-offset_top = 320.0
-offset_right = 546.0
-offset_bottom = 383.0
-mouse_filter = 1
-theme = ExtResource("1_b1ipa")
-text = "S"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Label_Pause_P1" type="Label" parent="."]
-layout_mode = 0
-offset_left = 218.0
-offset_top = 390.0
-offset_right = 546.0
-offset_bottom = 453.0
-mouse_filter = 1
-theme = ExtResource("1_b1ipa")
-text = "ESC"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Label_Up_P2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 742.0
-offset_top = 253.0
-offset_right = 1070.0
-offset_bottom = 316.0
-mouse_filter = 1
-theme = ExtResource("1_b1ipa")
-text = "UP ARROW"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Label_Down_P2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 742.0
-offset_top = 320.0
-offset_right = 1070.0
-offset_bottom = 383.0
-mouse_filter = 1
-theme = ExtResource("1_b1ipa")
-text = "DOWN ARROW"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Label_Pause_P2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 742.0
-offset_top = 390.0
-offset_right = 1070.0
-offset_bottom = 453.0
-mouse_filter = 1
-theme = ExtResource("1_b1ipa")
-text = "ENTER"
-horizontal_alignment = 2
-vertical_alignment = 1
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Button_Confirm" to="." method="_on_button_confirm_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/Button_Back" to="." method="_on_button_back_pressed"]

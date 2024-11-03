@@ -33,3 +33,7 @@ func _on_back_button_pressed():
 func _on_visibility_changed():
 	if !is_visible():
 		$"../GUIBackground".hide()
+
+func _on_controls_pressed():
+	hide()
+	SceneManager.push_scene(GlobalEnums.GameScenes.CONTROLS_MENU)

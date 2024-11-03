@@ -21,6 +21,8 @@ func set_scene():
 			GlobalSignals.scene_pauseMenu.emit()
 		GlobalEnums.GameScenes.OPTIONS_MENU:
 			GlobalSignals.scene_optionsMenu.emit()
+		GlobalEnums.GameScenes.CONTROLS_MENU:
+			GlobalSignals.scene_controlsMenu.emit()
 
 # Add new scene to stack changing the current scene
 func push_scene(scene):

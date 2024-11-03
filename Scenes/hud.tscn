@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq6qrrdwgxiid"]
+[gd_scene load_steps=11 format=3 uid="uid://cq6qrrdwgxiid"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_m37b5"]
 [ext_resource type="FontFile" uid="uid://ccfqm3vdf1qg" path="res://Assets/Fonts/AmaticSC-Regular.ttf" id="2_e8m4c"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="5_ii3dr"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="6_jh8sb"]
 [ext_resource type="Script" path="res://Scripts/OptionsMenu.gd" id="6_vo8by"]
+[ext_resource type="PackedScene" uid="uid://dces7q46jng7a" path="res://Scenes/keybind_remap.tscn" id="10_a7h4u"]
 
 [node name="HUD" type="CanvasLayer"]
 follow_viewport_enabled = true
@@ -213,6 +214,8 @@ offset_right = 103.5
 offset_bottom = 248.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
 
 [node name="Options" type="Label" parent="OptionsMenu/GridContainer"]
 layout_mode = 2
@@ -293,6 +296,9 @@ text = "Apply Changes"
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu/GridContainer"]
 layout_mode = 2
 
+[node name="Controls_Menu" parent="." instance=ExtResource("10_a7h4u")]
+visible = false
+
 [connection signal="visibility_changed" from="MainMenu" to="MainMenu" method="_on_visibility_changed"]
 [connection signal="pressed" from="MainMenu/New Game" to="MainMenu" method="_on_new_game_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/Quit" to="MainMenu" method="_on_quit_pressed"]
@@ -307,5 +313,6 @@ layout_mode = 2
 [connection signal="pressed" from="PauseMenu/GridContainer/ResumeGame" to="PauseMenu" method="_on_resume_game_pressed"]
 [connection signal="pressed" from="PauseMenu/GridContainer/OptionsButton" to="PauseMenu" method="_on_options_button_pressed"]
 [connection signal="visibility_changed" from="OptionsMenu" to="OptionsMenu" method="_on_visibility_changed"]
+[connection signal="pressed" from="OptionsMenu/GridContainer/Controls" to="OptionsMenu" method="_on_controls_pressed"]
 [connection signal="pressed" from="OptionsMenu/GridContainer/BackButton" to="OptionsMenu" method="_on_back_button_pressed"]
 [connection signal="pressed" from="OptionsMenu/GridContainer/ApplyChangesButton" to="OptionsMenu" method="_on_apply_changes_button_pressed"]

@@ -2,7 +2,8 @@ extends Node
 
 class_name Global_Config
 
-const SAVEFILE 						= "user://nimbusballconfig.save"
+const SAVEFILE 						= "user://nimbusballconfig.json"
+var json_string
 
 
 var sfx_volume 						: float
@@ -22,12 +23,20 @@ func _ready():
 		"screen_shake_level" 		: screen_shake_level 	as float,
 		"controls" 					: controls 				as Dictionary
 	}
+	#delete_save()
 	load_config()
+	print(configs)
 
 func load_config():
 	if FileAccess.file_exists(SAVEFILE):
 		var file 					= FileAccess.open(SAVEFILE, FileAccess.READ)
-		var loaded_configs 			= file.get_var(configs)
+		var json_string := file.get_line()
+		var loaded_configs
+		
+		var json = JSON.new()
+		var error = json.parse(json_string)
+		if error == OK:
+			loaded_configs = json.data
 		
 		configs.sfx_volume 			= loaded_configs.sfx_volume
 		configs.music_volume 		= loaded_configs.music_volume
@@ -51,14 +60,22 @@ func load_config():
 	
 func save_config():
 	var file 						= FileAccess.open(SAVEFILE, FileAccess.WRITE)
-	file.store_var(configs)
-	file 							= null
+	json_string = JSON.stringify(configs)
+	file.store_line(json_string)
 
 func bind_controls() -> void:
 	var key_event
 	for control in controls:
-		key_event 					= InputEventKey.new()
-		key_event.keycode 			= controls[control]
+		if controls[control] is InputEventKey:
+			key_event 					= InputEventKey.new()
+			key_event.keycode 			= controls[control].keycode
+		if controls[control] is InputEventMouseButton:
+			key_event = InputEventMouseButton.new()
+			key_event.button_index = controls[control].button_index
 		
 		InputMap.action_erase_events(control)
 		InputMap.action_add_event(control, key_event)
+
+func delete_save():
+	if FileAccess.file_exists(SAVEFILE):
+		DirAccess.remove_absolute(SAVEFILE)

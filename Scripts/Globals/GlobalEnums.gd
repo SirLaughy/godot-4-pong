@@ -15,7 +15,7 @@ enum InOutDirection{IN, OUT}
 enum Direction{LEFT, RIGHT}
 
 # the game scene
-enum GameScenes{MAIN_MENU, PAUSE_MENU, OPTIONS_MENU, GAME_SCENE}
+enum GameScenes{MAIN_MENU, PAUSE_MENU, OPTIONS_MENU, CONTROLS_MENU, GAME_SCENE}
 
 enum PaddleSide{LEFT, RIGHT}
 
