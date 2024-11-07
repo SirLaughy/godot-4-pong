@@ -10,9 +10,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GlobalSignals.scene_gameScene.connect(scene_gameScene)
-	GlobalSignals.New_Game.connect(new_game)
-	GlobalSignals.scene_mainMenu.connect(scene_mainMenu)
+	signal_connect()
 	GlobalConfigs.screen_size = get_viewport_rect().size
 	SceneManager.set_scene()
 
@@ -24,6 +22,7 @@ func _input(_event):
 				pass
 			GlobalEnums.GameScenes.GAME_SCENE:
 				SceneManager.push_scene(GlobalEnums.GameScenes.PAUSE_MENU)
+				$ControlsDisplay.hide()
 			GlobalEnums.GameScenes.PAUSE_MENU:
 				$HUD/PauseMenu.hide()
 				SceneManager.pop_stack()
@@ -56,13 +55,13 @@ func new_round():
 
 # increase right hand GlobalVariables.score
 func _on_screen_left_body_entered(_body):
-		GlobalVariables.score[1] += 1
+		change_score(GlobalEnums.PaddleSide.RIGHT)
 		$HUD/Scores/Score2.text = str(GlobalVariables.score[1])
 		check_score()
 
 # increase left hand GlobalVariables.score
 func _on_screen_right_body_entered(_body):
-		GlobalVariables.score[0] += 1
+		change_score(GlobalEnums.PaddleSide.LEFT)
 		$HUD/Scores/Score1.text = str(GlobalVariables.score[0])
 		check_score()
 
@@ -70,6 +69,7 @@ func _on_screen_right_body_entered(_body):
 func _on_ball_timer_timeout():
 	ball.random_direction()
 
+	
 # display winner and return to main menu
 func game_over():
 	if GlobalVariables.game_mode == GlobalEnums.GameStatus.RUNNING:
@@ -103,3 +103,16 @@ func scene_gameScene():
 
 func scene_mainMenu() -> void:
 	new_round()
+
+func change_score(side):
+	match side:
+		GlobalEnums.PaddleSide.LEFT:
+			GlobalVariables.score[0] +=1
+		GlobalEnums.PaddleSide.RIGHT:
+			GlobalVariables.score[1] +=1
+	GlobalSignals.point_scored.emit(side)
+
+func signal_connect():
+	GlobalSignals.scene_gameScene.connect(scene_gameScene)
+	GlobalSignals.New_Game.connect(new_game)
+	GlobalSignals.scene_mainMenu.connect(scene_mainMenu)

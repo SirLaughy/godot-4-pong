@@ -22,6 +22,6 @@ func shake():
 	offset.y = (max_offset.y * amount * randf_range(-1, 1))
 	
 func add_trauma(amount : float):
-		trauma = min(amount * GlobalConfigs.screen_shake_level, 1.0)
+		trauma = min(amount * GlobalConfigs.configs.screen_shake_level, 1.0)
 	
 	

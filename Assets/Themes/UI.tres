@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://fifqueo1ohan"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://fifqueo1ohan"]
 
 [ext_resource type="FontFile" uid="uid://ccfqm3vdf1qg" path="res://Assets/Fonts/AmaticSC-Regular.ttf" id="1_84w28"]
 [ext_resource type="Texture2D" uid="uid://dwoauwkbblyr4" path="res://Assets/Sprites/sprite_button_hovered.png" id="2_bcb31"]
 [ext_resource type="Texture2D" uid="uid://b5lvc3e6wtu8v" path="res://Assets/Sprites/sprite_button_default.png" id="3_jqme7"]
 [ext_resource type="Texture2D" uid="uid://cfrl45whp332r" path="res://Assets/Sprites/sprite_button_pressed.png" id="4_i0m18"]
+[ext_resource type="FontFile" uid="uid://cl7q3e4lr70i" path="res://Assets/Fonts/AmaticSC-Bold.ttf" id="5_nfa4j"]
+[ext_resource type="Texture2D" uid="uid://b7xokdhncgj64" path="res://Assets/Icons/check_box_outline_blank_64dp_5F6368_FILL0_wght400_GRAD0_opsz48.png" id="6_pul46"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwoyw"]
 content_margin_left = 4.0
@@ -67,6 +69,13 @@ texture_margin_bottom = 2.0
 expand_margin_left = 16.0
 expand_margin_right = 16.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8sroa"]
+texture = ExtResource("6_pul46")
+texture_margin_left = 98.0
+texture_margin_top = 48.0
+texture_margin_right = 98.0
+texture_margin_bottom = 48.0
+
 [resource]
 default_font = ExtResource("1_84w28")
 default_font_size = 48
@@ -100,6 +109,10 @@ Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 48
 Label/fonts/font = ExtResource("1_84w28")
+Label_Control_Key/base_type = &"Label"
+Label_Control_Key/font_sizes/font_size = 98
+Label_Control_Key/fonts/font = ExtResource("5_nfa4j")
+Label_Control_Key/styles/normal = SubResource("StyleBoxTexture_8sroa")
 Label_Heading/base_type = &"Label"
 Label_Heading/colors/font_color = Color(0.788235, 0.701961, 0.635294, 1)
 Label_Heading/colors/font_outline_color = Color(0.439216, 0.258824, 0.0784314, 1)

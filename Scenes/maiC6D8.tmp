@@ -1,0 +1,145 @@
+[gd_scene load_steps=14 format=3 uid="uid://cqq5dpjd0hyyj"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_juicp"]
+[ext_resource type="Texture2D" uid="uid://5vb373nbxgv1" path="res://Assets/Sprites/sprite_sky.png" id="2_kip5k"]
+[ext_resource type="PackedScene" uid="uid://m0m2lor6qgmg" path="res://Scenes/ball.tscn" id="3_2tlln"]
+[ext_resource type="Texture2D" uid="uid://ccje43xsg0ivf" path="res://Assets/Sprites/meaasure lines.png" id="3_qyb5e"]
+[ext_resource type="PackedScene" uid="uid://pcd7t2ql1n7g" path="res://Scenes/paddle.tscn" id="4_m0r5h"]
+[ext_resource type="Script" path="res://Scripts/ControlsDisplay.gd" id="8_orays"]
+[ext_resource type="PackedScene" uid="uid://cq6qrrdwgxiid" path="res://Scenes/hud.tscn" id="8_r70bt"]
+[ext_resource type="Script" path="res://Scripts/BallTrappedDetection.gd" id="9_6blkq"]
+[ext_resource type="PackedScene" uid="uid://sdeo185qikix" path="res://Scenes/controls_display.tscn" id="9_mh86u"]
+[ext_resource type="PackedScene" uid="uid://c6jorspf5q03q" path="res://Scenes/shake_camera.tscn" id="10_gb3ao"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m707d"]
+size = Vector2(1150, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyi36"]
+size = Vector2(24, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6f1b"]
+size = Vector2(64, 64)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_juicp")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-10, -9)
+scale = Vector2(1.02257, 1.02932)
+texture = ExtResource("2_kip5k")
+centered = false
+
+[node name="Center Lines" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_qyb5e")
+centered = false
+
+[node name="screen_top" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="screen_top"]
+position = Vector2(576, -16)
+shape = SubResource("RectangleShape2D_m707d")
+
+[node name="screen_bottom" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="screen_bottom"]
+position = Vector2(576, 664)
+shape = SubResource("RectangleShape2D_m707d")
+
+[node name="screen_left" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="screen_left"]
+position = Vector2(-12, 324)
+shape = SubResource("RectangleShape2D_xyi36")
+
+[node name="screen_right" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="screen_right"]
+position = Vector2(1164, 324)
+shape = SubResource("RectangleShape2D_xyi36")
+
+[node name="Paddle1" parent="." instance=ExtResource("4_m0r5h")]
+visible = false
+position = Vector2(278, 279)
+
+[node name="Paddle2" parent="." instance=ExtResource("4_m0r5h")]
+visible = false
+position = Vector2(190, 277)
+side = 1
+controller = 1
+
+[node name="Ball" parent="." instance=ExtResource("3_2tlln")]
+visible = false
+position = Vector2(232, 360)
+
+[node name="BallTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource("8_r70bt")]
+
+[node name="BallTrappedDetection" type="Area2D" parent="."]
+script = ExtResource("9_6blkq")
+
+[node name="TopLeft" type="CollisionShape2D" parent="BallTrappedDetection"]
+position = Vector2(82, 33)
+shape = SubResource("RectangleShape2D_a6f1b")
+
+[node name="BottomLeft" type="CollisionShape2D" parent="BallTrappedDetection"]
+position = Vector2(82, 615)
+shape = SubResource("RectangleShape2D_a6f1b")
+
+[node name="TopRight" type="CollisionShape2D" parent="BallTrappedDetection"]
+position = Vector2(1070, 33)
+shape = SubResource("RectangleShape2D_a6f1b")
+
+[node name="BottomRight" type="CollisionShape2D" parent="BallTrappedDetection"]
+position = Vector2(1070, 615)
+shape = SubResource("RectangleShape2D_a6f1b")
+
+[node name="BallDetectionTimer" type="Timer" parent="BallTrappedDetection"]
+wait_time = 0.5
+one_shot = true
+
+[node name="ControlsDisplay" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("8_orays")
+
+[node name="Controls_Display_P1" parent="ControlsDisplay" instance=ExtResource("9_mh86u")]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 202.0
+offset_right = 16.0
+offset_bottom = 202.0
+grow_horizontal = 1
+scale = Vector2(0.2, 0.2)
+size_flags_vertical = 4
+
+[node name="Controls_Display_P2" parent="ControlsDisplay" instance=ExtResource("9_mh86u")]
+offset_left = 1038.0
+offset_top = 526.0
+offset_right = 1038.0
+offset_bottom = 526.0
+scale = Vector2(0.2, 0.2)
+side = 1
+
+[node name="Transition_Timer" type="Timer" parent="ControlsDisplay"]
+wait_time = 0.5
+one_shot = true
+
+[node name="ShakeCamera" parent="." instance=ExtResource("10_gb3ao")]
+
+[connection signal="input_event" from="screen_top" to="Ball" method="_on_screen_top_input_event"]
+[connection signal="input_event" from="screen_bottom" to="Ball" method="_on_screen_bottom_input_event"]
+[connection signal="body_entered" from="screen_left" to="." method="_on_screen_left_body_entered"]
+[connection signal="area_entered" from="screen_right" to="Ball" method="_on_screen_right_area_entered"]
+[connection signal="body_entered" from="screen_right" to="." method="_on_screen_right_body_entered"]
+[connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
+[connection signal="ball_trapped" from="BallTrappedDetection" to="HUD" method="_on_ball_trapped_detection_ball_trapped"]
+[connection signal="body_entered" from="BallTrappedDetection" to="BallTrappedDetection" method="_on_body_entered"]
+[connection signal="body_exited" from="BallTrappedDetection" to="BallTrappedDetection" method="_on_body_exited"]
+[connection signal="timeout" from="BallTrappedDetection/BallDetectionTimer" to="BallTrappedDetection" method="_on_ball_detection_timer_timeout"]
+[connection signal="timeout" from="ControlsDisplay/Transition_Timer" to="ControlsDisplay" method="_on_transition_timer_timeout"]

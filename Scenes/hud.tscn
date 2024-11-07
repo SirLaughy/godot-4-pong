@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq6qrrdwgxiid"]
+[gd_scene load_steps=12 format=3 uid="uid://cq6qrrdwgxiid"]
 
 [ext_resource type="Script" path="res://Scripts/hud.gd" id="1_m37b5"]
 [ext_resource type="FontFile" uid="uid://ccfqm3vdf1qg" path="res://Assets/Fonts/AmaticSC-Regular.ttf" id="2_e8m4c"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://fifqueo1ohan" path="res://Assets/Themes/UI.tres" id="4_pix71"]
 [ext_resource type="Script" path="res://Scripts/GUIBackground.gd" id="5_7e58c"]
 [ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="5_ii3dr"]
+[ext_resource type="Script" path="res://Scripts/Scores.gd" id="5_oh0w8"]
 [ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="6_jh8sb"]
 [ext_resource type="Script" path="res://Scripts/OptionsMenu.gd" id="6_vo8by"]
 [ext_resource type="PackedScene" uid="uid://dces7q46jng7a" path="res://Scenes/keybind_remap.tscn" id="10_a7h4u"]
@@ -97,6 +98,7 @@ offset_bottom = 40.0
 
 [node name="Scores" type="CanvasGroup" parent="."]
 visible = false
+script = ExtResource("5_oh0w8")
 
 [node name="Score1" type="Label" parent="Scores"]
 anchors_preset = 5
