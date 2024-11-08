@@ -38,6 +38,9 @@ func _ready():
 		"controls" 					: controls
 	}
 	load_config()
+	bind_controls()
+	set_bus_volume("SFX", configs.sfx_volume)
+	set_bus_volume("Music", configs.music_volume)
 
 # load configs from save, if not avaliable load defaults
 func load_config():
@@ -62,7 +65,6 @@ func load_config():
 		configs.music_volume 		= DEFAULT_MUSIC_VOLUME
 		configs.screen_shake_level 	= DEFAULT_SCREEN_SHAKE_LEVEL
 		configs.controls 			= DEFAULT_CONTROLS
-	bind_controls()
 
 # save current configs to file
 func save_config():
@@ -84,3 +86,7 @@ func bind_controls() -> void:
 		
 		InputMap.action_erase_events(control)
 		InputMap.action_add_event(control, key_event)
+
+func set_bus_volume(bus, value):
+	var bus_index = AudioServer.get_bus_index(bus)
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))

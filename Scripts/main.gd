@@ -76,7 +76,9 @@ func game_over():
 		$HUD/Message.text = check_winner() + " wins!"
 		$HUD/Message.show()
 	GlobalVariables.game_status = GlobalEnums.GameStatus.STOPPED
+	SfxManager.play_sound(SfxManager.sfx_game_over)
 	SceneManager.set_stack(GlobalEnums.GameScenes.MAIN_MENU)
+	
 
 # return who is the winner
 func check_winner():

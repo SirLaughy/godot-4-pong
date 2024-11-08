@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://crr8bsfwxbpah"]
+
+[ext_resource type="Script" path="res://Scripts/SFX_Manager.gd" id="1_ao2cf"]
+[ext_resource type="AudioStream" uid="uid://dxkq3ym0kqmu" path="res://Assets/Sounds/sfx_gameOver.ogg" id="2_vqr2j"]
+[ext_resource type="AudioStream" uid="uid://buh7tq78no6c4" path="res://Assets/Sounds/sfx_pointScored.ogg" id="3_1p34b"]
+
+[node name="SFX_Manager" type="Node2D"]
+script = ExtResource("1_ao2cf")
+
+[node name="sfx_gameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vqr2j")
+bus = &"SFX"
+
+[node name="sfx_pointScored" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1p34b")
+bus = &"SFX"

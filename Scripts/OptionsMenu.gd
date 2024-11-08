@@ -19,6 +19,8 @@ func _on_apply_changes_button_pressed():
 	GlobalConfigs.configs.music_volume = $GridContainer/MusicSlider.value
 	GlobalConfigs.configs.screen_shake_level = $GridContainer/ScreenShakeSlider.value
 	GlobalConfigs.save_config()
+	GlobalConfigs.set_bus_volume("SFX", GlobalConfigs.configs.sfx_volume)
+	GlobalConfigs.set_bus_volume("Music", GlobalConfigs.configs.music_volume)
 	$"..".message("Settings Changed")
 	hide()
 	SceneManager.pop_stack()

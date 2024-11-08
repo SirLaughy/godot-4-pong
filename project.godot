@@ -22,6 +22,7 @@ GlobalEnums="*res://Scripts/Globals/GlobalEnums.gd"
 GlobalSignals="*res://Scripts/Globals/GlobalSignals.gd"
 GlobalVariables="*res://Scripts/Globals/GlobalVariables.gd"
 SceneManager="*res://Scripts/Globals/SceneManager.gd"
+SfxManager="*res://Scenes/sfx_manager.tscn"
 
 [display]
 

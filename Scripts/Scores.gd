@@ -14,6 +14,7 @@ func on_point_scored(side):
 			paddle = score_1
 		GlobalEnums.PaddleSide.RIGHT:
 			paddle = score_2
+	SfxManager.play_sound(SfxManager.sfx_point_scored)
 	var tween = get_tree().create_tween()
 	tween.tween_property(paddle, "scale", Vector2(1.1, 1.1), 0.1)
 	tween.tween_property(paddle, "scale", Vector2(1, 1), 0.1)
