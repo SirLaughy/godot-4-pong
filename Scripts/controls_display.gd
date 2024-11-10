@@ -21,7 +21,7 @@ func on_scene_gameScene():
 			if side == GlobalEnums.PaddleSide.RIGHT:
 				hide()
 		GlobalEnums.GameMode.MULTIPLAYER:
-			pass
+			show()
 
 func on_newGame():
 	transition()

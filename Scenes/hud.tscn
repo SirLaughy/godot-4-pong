@@ -132,12 +132,12 @@ script = ExtResource("5_7e58c")
 
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(584, 256)
-rotation = -0.120428
 texture = ExtResource("2_h3cku")
 script = ExtResource("3_tfvbx")
 
 [node name="LogoTimer" type="Timer" parent="Logo"]
-autostart = true
+wait_time = 5.0
+one_shot = true
 
 [node name="Message" type="Label" parent="."]
 visible = false

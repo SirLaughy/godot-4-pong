@@ -16,3 +16,14 @@ texture = ExtResource("1_qidsw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3vak7")
+
+[node name="PaddleSoundTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="WallSoundTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="PaddleSoundTimer" to="." method="_on_paddle_sound_timer_timeout"]
+[connection signal="timeout" from="WallSoundTimer" to="." method="_on_wall_sound_timer_timeout"]

@@ -24,12 +24,14 @@ func _on_apply_changes_button_pressed():
 	$"..".message("Settings Changed")
 	hide()
 	SceneManager.pop_stack()
+	SfxManager.play_sound(SfxManager.sfx_button_click)
 
 
 # Return to previous scene
 func _on_back_button_pressed():
 	hide()
 	SceneManager.pop_stack()
+	SfxManager.play_sound(SfxManager.sfx_button_click)
 
 # Manage hiding external components when hidden
 func _on_visibility_changed():
@@ -39,3 +41,4 @@ func _on_visibility_changed():
 func _on_controls_pressed():
 	hide()
 	SceneManager.push_scene(GlobalEnums.GameScenes.CONTROLS_MENU)
+	SfxManager.play_sound(SfxManager.sfx_button_click)

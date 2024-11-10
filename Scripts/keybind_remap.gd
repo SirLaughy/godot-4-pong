@@ -57,16 +57,19 @@ func _on_button_confirm_pressed():
 	GlobalConfigs.save_config()
 	hide()
 	SceneManager.pop_stack()
+	SfxManager.play_sound(SfxManager.sfx_button_click)
 
 # Return to last scene
 func _on_button_back_pressed():
 	hide()
 	SceneManager.pop_stack()
+	SfxManager.play_sound(SfxManager.sfx_button_click)
 
 # Restore controls to default
 func _on_button_restore_defaults_pressed():
 	controls = GlobalConfigs.DEFAULT_CONTROLS
 	configure_labels()
+	SfxManager.play_sound(SfxManager.sfx_button_click)
 
 # Set all button labels to the corresponding keybind
 func configure_labels() -> void:

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b5lvc3e6wtu8v" path="res://Assets/Sprites/sprite_button_default.png" id="3_jqme7"]
 [ext_resource type="Texture2D" uid="uid://cfrl45whp332r" path="res://Assets/Sprites/sprite_button_pressed.png" id="4_i0m18"]
 [ext_resource type="FontFile" uid="uid://cl7q3e4lr70i" path="res://Assets/Fonts/AmaticSC-Bold.ttf" id="5_nfa4j"]
-[ext_resource type="Texture2D" uid="uid://b7xokdhncgj64" path="res://Assets/Icons/check_box_outline_blank_64dp_5F6368_FILL0_wght400_GRAD0_opsz48.png" id="6_pul46"]
+[ext_resource type="Texture2D" uid="uid://bby8waeote357" path="res://Assets/Icons/check_box_outline_blank_64dp_5F6368_FILL0_wght400_GRAD0_opsz48.png" id="6_pul46"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwoyw"]
 content_margin_left = 4.0

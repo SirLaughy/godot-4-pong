@@ -1,16 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://crr8bsfwxbpah"]
+[gd_scene load_steps=7 format=3 uid="uid://crr8bsfwxbpah"]
 
 [ext_resource type="Script" path="res://Scripts/SFX_Manager.gd" id="1_ao2cf"]
 [ext_resource type="AudioStream" uid="uid://dxkq3ym0kqmu" path="res://Assets/Sounds/sfx_gameOver.ogg" id="2_vqr2j"]
 [ext_resource type="AudioStream" uid="uid://buh7tq78no6c4" path="res://Assets/Sounds/sfx_pointScored.ogg" id="3_1p34b"]
+[ext_resource type="AudioStream" uid="uid://dqmpa0y1rraug" path="res://Assets/Sounds/sfx_buttonClick.ogg" id="4_e8m2i"]
+[ext_resource type="AudioStream" uid="uid://cgwegn7j4y7bq" path="res://Assets/Sounds/sfx_paddleCollision.ogg" id="5_two3q"]
+[ext_resource type="AudioStream" uid="uid://caexbpfegrl2b" path="res://Assets/Sounds/sfx_wallCollision.ogg" id="6_gnffa"]
 
 [node name="SFX_Manager" type="Node2D"]
 script = ExtResource("1_ao2cf")
 
 [node name="sfx_gameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vqr2j")
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="sfx_pointScored" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1p34b")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="sfx_buttonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_e8m2i")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="sfx_paddleCollision" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_two3q")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="sfx_wallCollision" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gnffa")
 bus = &"SFX"

@@ -15,16 +15,19 @@ func scene_pauseMenu():
 func _on_end_game_pressed():
 	hide()
 	SceneManager.set_stack(GlobalEnums.GameScenes.MAIN_MENU)
-
+	SfxManager.play_sound(SfxManager.sfx_game_over)
+	SfxManager.play_sound(SfxManager.sfx_button_click)
 
 func _on_resume_game_pressed():
 	hide()
 	SceneManager.pop_stack()
+	SfxManager.play_sound(SfxManager.sfx_button_click)
 
 
 func _on_options_button_pressed():
 	hide()
 	SceneManager.push_scene(GlobalEnums.GameScenes.OPTIONS_MENU)
+	SfxManager.play_sound(SfxManager.sfx_button_click)
 
 
 func _on_visibility_changed():

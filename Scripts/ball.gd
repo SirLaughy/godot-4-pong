@@ -20,6 +20,9 @@ var width = 64
 var height = 64
 var center = Vector2(round(width/2), round(height/2))
 
+var sfx_paddle_playing = false
+var sfx_wall_playing = false
+
 func _physics_process(delta):
 	# check that game is in progress
 	if GlobalVariables.game_status == GlobalEnums.GameStatus.RUNNING:
@@ -42,8 +45,16 @@ func _physics_process(delta):
 				direction = find_new_direction(collider)
 				# default trauma 0.2
 				$"../ShakeCamera".add_trauma(0.2)
+				if sfx_paddle_playing == false:
+					SfxManager.play_sound(SfxManager.sfx_paddle_collision)
+					sfx_paddle_playing = true
+					$PaddleSoundTimer.start()
 			else:
 				direction = direction.bounce(collision.get_normal())
+				if sfx_wall_playing == false:
+					SfxManager.play_sound(SfxManager.sfx_wall_collision)
+					sfx_wall_playing = true
+					$WallSoundTimer.start()
 		
 
 # get a random direction
@@ -67,3 +78,10 @@ func find_new_direction(collider):
 func is_front(collision):
 	return not collision.get_normal().y == -1 or collision.get_normal().y == 1
 
+
+func _on_paddle_sound_timer_timeout():
+	sfx_paddle_playing = false
+
+
+func _on_wall_sound_timer_timeout():
+	sfx_wall_playing = false

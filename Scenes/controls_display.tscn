@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://sdeo185qikix"]
 
-[ext_resource type="Texture2D" uid="uid://d0oah6w8gvmcx" path="res://Assets/Icons/arrow_upward_64dp_5F6368_FILL0_wght400_GRAD0_opsz48.png" id="1_rod03"]
+[ext_resource type="Texture2D" uid="uid://b65us5i620enf" path="res://Assets/Icons/arrow_upward_64dp_5F6368_FILL0_wght400_GRAD0_opsz48.png" id="1_rod03"]
 [ext_resource type="Script" path="res://Scripts/controls_display.gd" id="1_s6vit"]
 [ext_resource type="Theme" uid="uid://fifqueo1ohan" path="res://Assets/Themes/UI.tres" id="3_cdj4s"]
-[ext_resource type="Texture2D" uid="uid://dtyke3jedwqta" path="res://Assets/Icons/arrow_downward_64dp_5F6368_FILL0_wght400_GRAD0_opsz48.png" id="4_3fp4l"]
-[ext_resource type="Texture2D" uid="uid://b0xecihrifrd3" path="res://Assets/Icons/play_pause_64dp_5F6368_FILL0_wght400_GRAD0_opsz48.png" id="5_j6r5u"]
+[ext_resource type="Texture2D" uid="uid://x7vtpeaj6kbo" path="res://Assets/Icons/arrow_downward_64dp_5F6368_FILL0_wght400_GRAD0_opsz48.png" id="4_3fp4l"]
+[ext_resource type="Texture2D" uid="uid://dufoctlf6kpge" path="res://Assets/Icons/play_pause_64dp_5F6368_FILL0_wght400_GRAD0_opsz48.png" id="5_j6r5u"]
 
 [node name="Controls_Display" type="Control"]
 layout_mode = 3

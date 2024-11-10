@@ -3,7 +3,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 
-# initialise score to 0 abd hide uneeded HUD elements
+# initialise score to 0 and hide uneeded HUD elements
 func _ready():
 	$Scores/Score1.text = str(0)
 	$Scores/Score2.text = str(0)
@@ -18,6 +18,7 @@ func new_game():
 	$Scores/Score2.text = str(GlobalVariables.score[1])
 	message("First to 7 Wins")
 	$Scores.show()
+	SfxManager.play_sound(SfxManager.sfx_button_click)
 
 # hide message after a time
 func _on_message_timer_timeout():
