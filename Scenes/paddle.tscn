@@ -17,5 +17,4 @@ texture = ExtResource("1_2qhr6")
 polygon = PackedVector2Array(-4, 96, -4, 96, 21, 96, 31, 85, 32, 83, 32, -86, 22, -96, -7, -96, -15, -90, -20, -85, -25, -79, -29, -72, -32, -65, -32, -33, -32, 10, -32, 64, -27, 73, -22, 81, -16, 88, -9, 93, -5, 96)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource("OccluderPolygon2D_vu62i")
