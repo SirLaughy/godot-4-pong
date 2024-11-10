@@ -38,24 +38,35 @@ func _physics_process(delta):
 		# if collision bounce
 		if collision:
 			collider = collision.get_collider()
+			collide(collision, collider)
+			bounce(collision, collider)
 			# if collision with player increase acceleration and rotation speed as well as changing angle of bounce depending on the part of the paddle it collides with
-			if (collider == $"../Paddle1" or collider == $"../Paddle2") and is_front(collision):
+			
+
+
+func bounce(collision, collider):
+	if (collider == $"../Paddle1" or collider == $"../Paddle2") and is_front(collision):
 				speed += acceleration
 				rotation_speed += initial_rotation_speed
 				direction = find_new_direction(collider)
 				# default trauma 0.2
 				$"../ShakeCamera".add_trauma(0.2)
-				if sfx_paddle_playing == false:
-					SfxManager.play_sound(SfxManager.sfx_paddle_collision)
-					sfx_paddle_playing = true
-					$PaddleSoundTimer.start()
-			else:
+	else:
 				direction = direction.bounce(collision.get_normal())
-				if sfx_wall_playing == false:
-					SfxManager.play_sound(SfxManager.sfx_wall_collision)
-					sfx_wall_playing = true
-					$WallSoundTimer.start()
-		
+
+func collide(collision, collider):
+	if (collider == $"../Paddle1" or collider == $"../Paddle2"):
+		if sfx_paddle_playing == false:
+			SfxManager.play_sound(SfxManager.sfx_paddle_collision)
+			sfx_paddle_playing = true
+			$PaddleSoundTimer.start()
+		GlobalSignals.paddle_collision.emit(collision)
+	else:
+		if sfx_wall_playing == false:
+			SfxManager.play_sound(SfxManager.sfx_wall_collision)
+			sfx_wall_playing = true
+			$WallSoundTimer.start()
+		GlobalSignals.cloud_collision.emit(collision)
 
 # get a random direction
 func random_direction():

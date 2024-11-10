@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://pcd7t2ql1n7g"]
+[gd_scene load_steps=4 format=3 uid="uid://pcd7t2ql1n7g"]
 
 [ext_resource type="Texture2D" uid="uid://c54yo204r1u85" path="res://Assets/Sprites/sprite_paddle.png" id="1_2qhr6"]
 [ext_resource type="Script" path="res://Scripts/paddle.gd" id="1_il5le"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_vu62i"]
+polygon = PackedVector2Array(-32, -65, -32, 64, -22, 81, -16, 88, -5, 96, 21, 96, 31, 85, 32, 83, 32, -86, 22, -96, -7, -96, -15, -90, -20, -85, -25, -79, -29, -72)
 
 [node name="Paddle" type="StaticBody2D"]
 z_index = 1
@@ -12,3 +15,7 @@ texture = ExtResource("1_2qhr6")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-4, 96, -4, 96, 21, 96, 31, 85, 32, 83, 32, -86, 22, -96, -7, -96, -15, -90, -20, -85, -25, -79, -29, -72, -32, -65, -32, -33, -32, 10, -32, 64, -27, 73, -22, 81, -16, 88, -9, 93, -5, 96)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_vu62i")
