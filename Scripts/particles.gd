@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var dust = $Dust
+var dust = preload("res://Scenes/dust.tscn")
+var cloud = preload("res://Scenes/cloud.tscn")
 
 
 func _ready():
@@ -11,9 +12,16 @@ func connect_signals():
 	GlobalSignals.paddle_collision.connect(on_paddle_collision)
 
 func on_cloud_collision(collision):
-	pass
+	var instance = cloud.instantiate()
+	instance.position = collision.get_position()
+	instance.rotation = get_angle_to(collision.get_normal())
+	instance.emitting = true
+	add_child(instance)
 
 func on_paddle_collision(collision):
-	dust.position = collision.get_position()
-	dust.rotation = get_angle_to(collision.get_normal())
-	dust.emitting = true
+	var instance = dust.instantiate()
+	instance.position = collision.get_position()
+	instance.rotation = get_angle_to(collision.get_normal())
+	instance.emitting = true
+	add_child(instance)
+

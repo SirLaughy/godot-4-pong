@@ -24,7 +24,7 @@ func _on_new_game_pressed():
 
 func _on_quit_pressed():
 	SfxManager.play_sound(SfxManager.sfx_button_click)
-	await SfxManager.sfx_button_click.finished
+	await get_tree().create_timer(0.25).timeout
 	get_tree().quit()
 	
 

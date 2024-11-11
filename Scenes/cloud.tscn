@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://buhqfvcwbafe5"]
+
+[ext_resource type="Texture2D" uid="uid://cirsf5mmsarch" path="res://Assets/Particles/dust_spritesheet.png" id="1_p8hq6"]
+[ext_resource type="Script" path="res://Scripts/cloud.gd" id="2_cban4"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1dvod"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_njns0"]
+_data = [Vector2(0, 0), 0.0, 14.3333, 0, 1, Vector2(0.0697674, 1), 0.0, 0.0, 0, 0, Vector2(0.901163, 0), -1.2028, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bbv5p"]
+curve = SubResource("Curve_njns0")
+
+[sub_resource type="Gradient" id="Gradient_bco7d"]
+colors = PackedColorArray(1, 1, 1, 1, 0.910376, 1, 0.997538, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_56726"]
+gradient = SubResource("Gradient_bco7d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7eh3g"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1, 0)
+angle_min = -720.0
+angle_max = 720.0
+spread = 80.0
+flatness = 0.2
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+color_initial_ramp = SubResource("GradientTexture1D_56726")
+alpha_curve = SubResource("CurveTexture_bbv5p")
+anim_offset_max = 1.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[node name="Cloud" type="GPUParticles2D"]
+modulate = Color(1, 1, 1, 0.701961)
+material = SubResource("CanvasItemMaterial_1dvod")
+scale = Vector2(0.1, 0.1)
+emitting = false
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_7eh3g")
+texture = ExtResource("1_p8hq6")
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.5
+trail_lifetime = 0.01
+script = ExtResource("2_cban4")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="finished" from="." to="." method="_on_finished"]

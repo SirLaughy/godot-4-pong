@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://oamikgsj878d"]
+
+[ext_resource type="Texture2D" uid="uid://cirsf5mmsarch" path="res://Assets/Particles/dust_spritesheet.png" id="1_xb58b"]
+[ext_resource type="Script" path="res://Scripts/dust.gd" id="2_cdlgw"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wk2ta"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_s3g1n"]
+_data = [Vector2(0, 0), 0.0, 14.3333, 0, 1, Vector2(0.0697674, 1), 0.0, 0.0, 0, 0, Vector2(0.901163, 0), -1.2028, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qywhk"]
+curve = SubResource("Curve_s3g1n")
+
+[sub_resource type="Curve" id="Curve_lwh71"]
+_data = [Vector2(0, 0.481777), 0.0, 0.0, 0, 0, Vector2(0.991279, 0.97779), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c47pu"]
+curve = SubResource("Curve_lwh71")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jfs7p"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1, 0)
+angle_min = -100.0
+angle_max = 100.0
+direction = Vector3(1, 0.5, 0)
+spread = 80.0
+flatness = 0.2
+initial_velocity_min = 1000.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -69.89
+linear_accel_max = 38.71
+radial_accel_min = 22.58
+radial_accel_max = 22.58
+scale_min = 2.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_c47pu")
+color = Color(0.886275, 0.839216, 0.8, 1)
+alpha_curve = SubResource("CurveTexture_qywhk")
+anim_offset_max = 1.0
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[node name="Dust" type="GPUParticles2D"]
+modulate = Color(1, 1, 1, 0.141176)
+material = SubResource("CanvasItemMaterial_wk2ta")
+scale = Vector2(0.1, 0.1)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_jfs7p")
+texture = ExtResource("1_xb58b")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.5
+trail_lifetime = 0.01
+script = ExtResource("2_cdlgw")
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="finished" from="." to="." method="_on_finished"]
