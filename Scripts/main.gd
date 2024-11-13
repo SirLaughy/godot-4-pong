@@ -69,7 +69,6 @@ func _on_screen_right_body_entered(_body):
 func _on_ball_timer_timeout():
 	ball.random_direction()
 
-	
 # display winner and return to main menu
 func game_over():
 	if GlobalVariables.game_mode == GlobalEnums.GameStatus.RUNNING:

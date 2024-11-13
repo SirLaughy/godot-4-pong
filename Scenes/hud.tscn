@@ -131,6 +131,7 @@ color = Color(0.741176, 0.741176, 0.741176, 0.588235)
 script = ExtResource("5_7e58c")
 
 [node name="Logo" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(584, 256)
 texture = ExtResource("2_h3cku")
 script = ExtResource("3_tfvbx")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqq5dpjd0hyyj"]
+[gd_scene load_steps=17 format=3 uid="uid://cqq5dpjd0hyyj"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_juicp"]
 [ext_resource type="Texture2D" uid="uid://5vb373nbxgv1" path="res://Assets/Sprites/sprite_sky.png" id="2_kip5k"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://sdeo185qikix" path="res://Scenes/controls_display.tscn" id="9_mh86u"]
 [ext_resource type="PackedScene" uid="uid://c6jorspf5q03q" path="res://Scenes/shake_camera.tscn" id="10_gb3ao"]
 [ext_resource type="PackedScene" uid="uid://bwttq5x23uvie" path="res://Scenes/cloud_side.tscn" id="12_xk67u"]
+[ext_resource type="Script" path="res://Scripts/SpeedupTimer.gd" id="13_gotyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m707d"]
 size = Vector2(1150, 32)
@@ -112,12 +113,12 @@ follow_viewport_enabled = true
 [node name="cloud_side" parent="Cloud_Walls" instance=ExtResource("12_xk67u")]
 z_index = 1
 z_as_relative = false
-position = Vector2(1400, -40)
+position = Vector2(1000, 50)
 
 [node name="cloud_side2" parent="Cloud_Walls" instance=ExtResource("12_xk67u")]
 z_index = 1
 z_as_relative = false
-position = Vector2(1400, 680)
+position = Vector2(1000, 640)
 
 [node name="ShakeCamera" parent="." instance=ExtResource("10_gb3ao")]
 
@@ -146,6 +147,12 @@ offset_bottom = 526.0
 scale = Vector2(0.2, 0.2)
 side = 1
 
+[node name="SpeedupTimer" type="Timer" parent="."]
+wait_time = 3000.0
+one_shot = true
+autostart = true
+script = ExtResource("13_gotyq")
+
 [connection signal="input_event" from="screen_top" to="Ball" method="_on_screen_top_input_event"]
 [connection signal="input_event" from="screen_bottom" to="Ball" method="_on_screen_bottom_input_event"]
 [connection signal="body_entered" from="screen_left" to="." method="_on_screen_left_body_entered"]
@@ -156,3 +163,4 @@ side = 1
 [connection signal="body_entered" from="BallTrappedDetection" to="BallTrappedDetection" method="_on_body_entered"]
 [connection signal="body_exited" from="BallTrappedDetection" to="BallTrappedDetection" method="_on_body_exited"]
 [connection signal="timeout" from="BallTrappedDetection/BallDetectionTimer" to="BallTrappedDetection" method="_on_ball_detection_timer_timeout"]
+[connection signal="timeout" from="SpeedupTimer" to="SpeedupTimer" method="_on_timeout"]

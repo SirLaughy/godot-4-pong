@@ -3,9 +3,9 @@ extends Control
 # declare variables
 @export var side : GlobalEnums.PaddleSide
 
-@onready var event_moveUp = $Move_Up/Event
-@onready var event_moveDown = $Move_Down/Event
-@onready var event_pause = $Pause/Event
+@onready var event_moveUp = $GridContainer/Move_Up_Event
+@onready var event_moveDown = $GridContainer/Move_Down_Event
+@onready var event_pause = $GridContainer/Pause_Event
 
 
 var controls : Dictionary
@@ -13,15 +13,19 @@ var controls : Dictionary
 func _ready():
 	GlobalSignals.New_Game.connect(on_newGame)
 	GlobalSignals.scene_gameScene.connect(on_scene_gameScene)
+	GlobalSignals.scene_optionsMenu.connect(on_scene_optionsMenu)
+	set_text()
 
 func on_scene_gameScene():
-	set_text()
 	match GlobalVariables.game_mode:
 		GlobalEnums.GameMode.SINGLEPLAYER:
 			if side == GlobalEnums.PaddleSide.RIGHT:
 				hide()
 		GlobalEnums.GameMode.MULTIPLAYER:
 			show()
+
+func on_scene_optionsMenu():
+	set_text()
 
 func on_newGame():
 	transition()
@@ -71,14 +75,14 @@ func transition():
 func get_x():
 	match side:
 		GlobalEnums.PaddleSide.LEFT:
-			return 16
+			return 40
 		GlobalEnums.PaddleSide.RIGHT:
 			return 1038
 
 func _on_transition_timer_timeout():
-	var tween = get_tree().create_tween()
-	tween.tween_property($".", "scale", Vector2(0.2, 0.2), 0.5)
-	tween.parallel().tween_property($".", "position", Vector2(get_x(), 526), 0.5)
 	if visible:
+		var tween = get_tree().create_tween()
+		tween.tween_property($".", "scale", Vector2(0.2, 0.2), 0.5)
+		tween.parallel().tween_property($".", "position", Vector2(get_x(), 500), 0.5)
 		tween.parallel().tween_property($".", "modulate:a", 0.5, 0.5)
 

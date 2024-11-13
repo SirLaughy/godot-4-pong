@@ -61,7 +61,6 @@ lifetime = 0.3
 one_shot = true
 explosiveness = 1.0
 collision_base_size = 0.5
-trail_lifetime = 0.01
 script = ExtResource("2_cdlgw")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

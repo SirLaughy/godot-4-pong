@@ -15,84 +15,60 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s6vit")
 
-[node name="Move_Up" type="HBoxContainer" parent="."]
-clip_contents = true
-layout_mode = 2
-offset_left = -93.0
-offset_top = -8.0
-offset_right = 663.0
-offset_bottom = 213.0
-size_flags_horizontal = 4
-theme_override_constants/separation = 128
-alignment = 1
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/h_separation = 128
+columns = 2
 
-[node name="Action" type="TextureRect" parent="Move_Up"]
+[node name="Move_Up_Action" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("1_rod03")
-expand_mode = 1
+expand_mode = 3
 stretch_mode = 3
 
-[node name="Event" type="Label" parent="Move_Up"]
+[node name="Move_Up_Event" type="Label" parent="GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cdj4s")
 theme_type_variation = &"Label_Control_Key"
 text = "W"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Move_Down" type="HBoxContainer" parent="."]
-clip_contents = true
-layout_mode = 2
-offset_left = -102.0
-offset_top = 191.0
-offset_right = 654.0
-offset_bottom = 412.0
-size_flags_horizontal = 4
-theme_override_constants/separation = 128
-alignment = 1
-
-[node name="Action" type="TextureRect" parent="Move_Down"]
+[node name="Move_Down_Action" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("4_3fp4l")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="Event" type="Label" parent="Move_Down"]
+[node name="Move_Down_Event" type="Label" parent="GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cdj4s")
 theme_type_variation = &"Label_Control_Key"
 text = "S"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pause" type="HBoxContainer" parent="."]
-clip_contents = true
-layout_mode = 2
-offset_left = -79.0
-offset_top = 387.0
-offset_right = 677.0
-offset_bottom = 608.0
-size_flags_horizontal = 4
-theme_override_constants/separation = 128
-alignment = 1
-
-[node name="Action" type="TextureRect" parent="Pause"]
+[node name="Pause_Action" type="TextureRect" parent="GridContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("5_j6r5u")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="Event" type="Label" parent="Pause"]
+[node name="Pause_Event" type="Label" parent="GridContainer"]
 layout_mode = 2
 theme = ExtResource("3_cdj4s")
 theme_type_variation = &"Label_Control_Key"
 text = "SPACE"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Transition_Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
-[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="timeout" from="Transition_Timer" to="." method="_on_transition_timer_timeout"]

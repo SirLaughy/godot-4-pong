@@ -24,4 +24,3 @@ func on_paddle_collision(collision):
 	instance.rotation = get_angle_to(collision.get_normal())
 	instance.emitting = true
 	add_child(instance)
-

@@ -46,7 +46,7 @@ func _ready():
 func load_config():
 	if FileAccess.file_exists(SAVEFILE):
 		var file 			= FileAccess.open(SAVEFILE, FileAccess.READ)
-		var json_string 	= file.get_line()
+		json_string 		= file.get_line()
 		var loaded_configs
 		
 		# convert json string into dictionary
