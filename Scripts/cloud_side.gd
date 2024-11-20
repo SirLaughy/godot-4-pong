@@ -26,10 +26,10 @@ func _on_off_timer_timeout():
 	on_timer.start()
 
 func _on_opening_timer_timeout():
-	on_timer.wait_time = DEFAULT_ON_TIMER
-	off_timer.wait_time = DEFAULT_OFF_TIMER
 	var tween = get_tree().create_tween()
 	tween.tween_property(cloud_generator, "speed_scale", DEFAULT_SPEED_SCALE, 5)
+	tween.parallel().tween_property(on_timer, "wait_time", DEFAULT_ON_TIMER, 5)
+	tween.parallel().tween_property(off_timer, "wait_time", DEFAULT_OFF_TIMER, 5)
 	#cloud_generator.speed_scale = DEFAULT_SPEED_SCALE
 	off_timer.stop()
 	on_timer.start()
