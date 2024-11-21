@@ -1,42 +1,51 @@
 extends CanvasLayer
 
+@onready var sfx_slider = %SFXSlider
+@onready var music_slider = %MusicSlider
+@onready var audio_channel_menu = %AudioChannelMenu
+@onready var check_box_show_controls = %CheckBoxShowControls
+@onready var screen_shake_slider = %ScreenShakeSlider
+
+
 # connect to the SceneManager signal for this scene
 func _ready():
 	GlobalSignals.scene_optionsMenu.connect(scene_optionsMenu)
 
 # set sliders to global config values and show all required components
 func scene_optionsMenu():
-	$GridContainer/SFXSlider.value = GlobalConfigs.configs.sfx_volume
-	$GridContainer/MusicSlider.value = GlobalConfigs.configs.music_volume
-	$GridContainer/ScreenShakeSlider.value = GlobalConfigs.configs.screen_shake_level
-	$"../GUIBackground".show()
+	sfx_slider.value = GlobalConfigs.configs.sfx_volume
+	music_slider.value = GlobalConfigs.configs.music_volume
+	screen_shake_slider.value = GlobalConfigs.configs.screen_shake_level
+	check_box_show_controls.set_pressed(GlobalConfigs.configs.show_controls)
 	show()
 	GlobalVariables.game_status = GlobalEnums.GameStatus.STOPPED
 
 # When changes are applied set the config variables to the values of each slider, save the config file and return to previous scene
 func _on_apply_changes_button_pressed():
-	GlobalConfigs.configs.sfx_volume = $GridContainer/SFXSlider.value
-	GlobalConfigs.configs.music_volume = $GridContainer/MusicSlider.value
-	GlobalConfigs.configs.screen_shake_level = $GridContainer/ScreenShakeSlider.value
-	GlobalConfigs.save_config()
+	# Sound
+	GlobalConfigs.configs.sfx_volume = sfx_slider.value
+	GlobalConfigs.configs.music_volume = music_slider.value
 	GlobalConfigs.set_bus_volume("SFX", GlobalConfigs.configs.sfx_volume)
 	GlobalConfigs.set_bus_volume("Music", GlobalConfigs.configs.music_volume)
+	
+	# Controls
+	GlobalConfigs.configs.show_controls = check_box_show_controls.is_pressed()
+
+	# Accessibility
+	GlobalConfigs.configs.screen_shake_level = screen_shake_slider.value
+	
+	# Save and Return to Previous Scene
+	GlobalConfigs.save_config()
 	$"..".message("Settings Changed")
 	hide()
 	SceneManager.pop_stack()
 	SfxManager.play_sound(SfxManager.sfx_button_click)
-
 
 # Return to previous scene
 func _on_back_button_pressed():
 	hide()
 	SceneManager.pop_stack()
 	SfxManager.play_sound(SfxManager.sfx_button_click)
-
-# Manage hiding external components when hidden
-func _on_visibility_changed():
-	if !is_visible():
-		$"../GUIBackground".hide()
 
 func _on_controls_pressed():
 	hide()

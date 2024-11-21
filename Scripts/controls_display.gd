@@ -17,12 +17,15 @@ func _ready():
 	set_text()
 
 func on_scene_gameScene():
-	match GlobalVariables.game_mode:
-		GlobalEnums.GameMode.SINGLEPLAYER:
-			if side == GlobalEnums.PaddleSide.RIGHT:
-				hide()
-		GlobalEnums.GameMode.MULTIPLAYER:
-			show()
+	if GlobalConfigs.configs.show_controls:
+		match GlobalVariables.game_mode:
+			GlobalEnums.GameMode.SINGLEPLAYER:
+				if side == GlobalEnums.PaddleSide.RIGHT:
+					hide()
+			GlobalEnums.GameMode.MULTIPLAYER:
+				show()
+	else:
+		hide()
 
 func on_scene_optionsMenu():
 	set_text()
@@ -60,17 +63,17 @@ func get_text(event : int) -> String:
 		else:
 			return temp.as_text() 
 		
-func transition():
-	$Transition_Timer.start()
-	scale = Vector2(0.5, 0.5)
-	position.y = 194
+func transition():	
 	if visible:
+		$Transition_Timer.start()
+		scale = Vector2(0.5, 0.5)
+		position.y = 194
 		modulate.a = 1
-	match side:
-		GlobalEnums.PaddleSide.LEFT:
-			position.x = 128
-		GlobalEnums.PaddleSide.RIGHT:
-			position.x = 800
+		match side:
+			GlobalEnums.PaddleSide.LEFT:
+				position.x = 128
+			GlobalEnums.PaddleSide.RIGHT:
+				position.x = 800
 
 func get_x():
 	match side:

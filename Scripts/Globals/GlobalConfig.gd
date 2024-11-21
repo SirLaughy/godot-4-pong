@@ -7,6 +7,7 @@ const SAVEFILE 						= "user://nimbusballconfig.json"
 const DEFAULT_SFX_VOLUME			= 1.0
 const DEFAULT_MUSIC_VOLUME			= 1.0
 const DEFAULT_SCREEN_SHAKE_LEVEL	= 1.0
+const DEFAULT_SHOW_CONTROLS			= true
 
 const DEFAULT_CONTROLS = {
 	"player1_up" 					: KEY_W,
@@ -23,6 +24,7 @@ var music_volume 					: float
 var screen_shake_level 				: float
 var screen_size 					: Vector2
 var controls 						: Dictionary
+var show_controls					: bool
 var configs 						: Dictionary
 
 var json_string
@@ -35,7 +37,8 @@ func _ready():
 		"sfx_volume" 				: sfx_volume, 
 		"music_volume" 				: music_volume,
 		"screen_shake_level" 		: screen_shake_level,
-		"controls" 					: controls
+		"controls" 					: controls,
+		"show_controls"				: show_controls
 	}
 	load_config()
 	bind_controls()
@@ -59,12 +62,14 @@ func load_config():
 		configs.music_volume 		= loaded_configs.music_volume
 		configs.screen_shake_level 	= loaded_configs.screen_shake_level
 		configs.controls 			= loaded_configs.controls
+		configs.show_controls		= loaded_configs.show_controls
 	# load defaults
 	else:
 		configs.sfx_volume 			= DEFAULT_SFX_VOLUME
 		configs.music_volume 		= DEFAULT_MUSIC_VOLUME
 		configs.screen_shake_level 	= DEFAULT_SCREEN_SHAKE_LEVEL
 		configs.controls 			= DEFAULT_CONTROLS
+		configs.show_controls		= DEFAULT_SHOW_CONTROLS
 
 # save current configs to file
 func save_config():

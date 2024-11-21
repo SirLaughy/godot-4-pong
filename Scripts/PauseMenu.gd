@@ -8,7 +8,6 @@ func scene_pauseMenu():
 	$"../Logo".show()
 	$"../Message".show()
 	$"../Message".text = "Paused"
-	$"../GUIBackground".show()
 	GlobalVariables.game_status = GlobalEnums.GameStatus.STOPPED
 
 
@@ -34,4 +33,3 @@ func _on_visibility_changed():
 	if !is_visible():
 		$"../Logo".hide()
 		$"../Message".hide()
-		$"../GUIBackground".hide()
