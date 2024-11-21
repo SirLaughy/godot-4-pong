@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://fifqueo1ohan"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://fifqueo1ohan"]
 
 [ext_resource type="FontFile" uid="uid://ccfqm3vdf1qg" path="res://Assets/Fonts/AmaticSC-Regular.ttf" id="1_84w28"]
 [ext_resource type="Texture2D" uid="uid://dwoauwkbblyr4" path="res://Assets/Sprites/sprite_button_hovered.png" id="2_bcb31"]
@@ -76,6 +76,23 @@ texture_margin_top = 48.0
 texture_margin_right = 98.0
 texture_margin_bottom = 48.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6oypj"]
+texture = ExtResource("3_jqme7")
+modulate_color = Color(0.572988, 0.572988, 0.572988, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktw7n"]
+texture = ExtResource("3_jqme7")
+modulate_color = Color(1, 1, 0.913725, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fid0i"]
+texture = ExtResource("2_bcb31")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k386r"]
+texture = ExtResource("3_jqme7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qer88"]
+texture = ExtResource("4_i0m18")
+
 [resource]
 default_font = ExtResource("1_84w28")
 default_font_size = 48
@@ -118,3 +135,8 @@ Label_Heading/colors/font_color = Color(0.788235, 0.701961, 0.635294, 1)
 Label_Heading/colors/font_outline_color = Color(0.439216, 0.258824, 0.0784314, 1)
 Label_Heading/constants/outline_size = 6
 Label_Heading/font_sizes/font_size = 64
+MenuButton/styles/disabled = SubResource("StyleBoxTexture_6oypj")
+MenuButton/styles/focus = SubResource("StyleBoxTexture_ktw7n")
+MenuButton/styles/hover = SubResource("StyleBoxTexture_fid0i")
+MenuButton/styles/normal = SubResource("StyleBoxTexture_k386r")
+MenuButton/styles/pressed = SubResource("StyleBoxTexture_qer88")

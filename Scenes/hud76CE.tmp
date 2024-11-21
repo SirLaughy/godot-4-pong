@@ -309,10 +309,8 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("4_pix71")
-theme_override_font_sizes/font_size = 20
+theme_type_variation = &"FlatMenuButton"
 keep_pressed_outside = true
-shortcut_in_tooltip = false
-text = "DEFAULT"
 
 [node name="VSeparator" type="VSeparator" parent="OptionsMenu/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
