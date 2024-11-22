@@ -31,3 +31,4 @@ func message(message_text):
 	
 func _on_ball_trapped_detection_ball_trapped():
 	message("Ball Trapped")
+

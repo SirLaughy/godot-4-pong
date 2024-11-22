@@ -139,6 +139,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Message" type="Label" parent="."]
+unique_name_in_owner = true
 visible = false
 anchors_preset = 8
 anchor_left = 0.5

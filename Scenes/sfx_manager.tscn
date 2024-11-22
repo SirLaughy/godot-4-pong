@@ -32,4 +32,5 @@ bus = &"SFX"
 
 [node name="sfx_wallCollision" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_gnffa")
+volume_db = 5.0
 bus = &"SFX"
