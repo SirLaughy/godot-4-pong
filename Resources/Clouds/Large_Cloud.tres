@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Cloud_Type" load_steps=3 format=3 uid="uid://dcqloo5pj4cxs"]
+
+[ext_resource type="Script" path="res://Scripts/resource_cloud_type.gd" id="1_escmm"]
+[ext_resource type="Texture2D" uid="uid://crlxiane2kf5x" path="res://Assets/Particles/cloudbig_spritesheet.png" id="2_gyuo3"]
+
+[resource]
+script = ExtResource("1_escmm")
+name = "Large Cloud"
+sprite_sheet = ExtResource("2_gyuo3")
+rows = 5
+columns = 2
+cloud_size = 10

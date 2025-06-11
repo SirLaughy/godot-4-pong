@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Cloud_Type" load_steps=3 format=3 uid="uid://w2tvreaoxj80"]
+
+[ext_resource type="Script" path="res://Scripts/resource_cloud_type.gd" id="1_0bx1d"]
+[ext_resource type="Texture2D" uid="uid://dl86uo7popsga" path="res://Assets/Particles/cloudmedium_spritesheet.png" id="2_ekr0v"]
+
+[resource]
+script = ExtResource("1_0bx1d")
+name = "Medium Cloud"
+sprite_sheet = ExtResource("2_ekr0v")
+rows = 2
+columns = 5
+cloud_size = 7

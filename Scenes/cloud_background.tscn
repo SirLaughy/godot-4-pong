@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b81hhhpbe7rt4"]
+[gd_scene load_steps=31 format=3 uid="uid://b81hhhpbe7rt4"]
 
 [ext_resource type="Script" path="res://Scripts/cloud_background.gd" id="1_ke0ey"]
 [ext_resource type="Texture2D" uid="uid://crlxiane2kf5x" path="res://Assets/Particles/cloudbig_spritesheet.png" id="1_nadve"]
@@ -42,10 +42,10 @@ scale_curve = SubResource("CurveTexture_mmgac")
 color_initial_ramp = SubResource("GradientTexture1D_tte00")
 anim_offset_max = 1.0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l73fk"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6t1y0"]
 particles_animation = true
-particles_anim_h_frames = 9
-particles_anim_v_frames = 1
+particles_anim_h_frames = 5
+particles_anim_v_frames = 2
 particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_0584n"]
@@ -77,6 +77,12 @@ scale_curve = SubResource("CurveTexture_hi3gv")
 color_initial_ramp = SubResource("GradientTexture1D_2n7r2")
 anim_offset_max = 1.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d6el4"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
 [sub_resource type="Gradient" id="Gradient_127rx"]
 offsets = PackedFloat32Array(0, 0.300633, 1)
 colors = PackedColorArray(0.82606, 0.82606, 0.82606, 1, 1, 1, 1, 1, 1, 1, 1, 0.12549)
@@ -105,6 +111,12 @@ scale_max = 1.2
 scale_curve = SubResource("CurveTexture_nq1hj")
 color_initial_ramp = SubResource("GradientTexture1D_c56a5")
 anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_e2a2i"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 5
+particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_osv1t"]
 offsets = PackedFloat32Array(0, 0.300633, 1)
@@ -167,7 +179,7 @@ one_shot = true
 
 [node name="CloudSmall" type="GPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.596078)
-material = SubResource("CanvasItemMaterial_l73fk")
+material = SubResource("CanvasItemMaterial_6t1y0")
 emitting = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_tx3ht")
@@ -188,7 +200,7 @@ one_shot = true
 
 [node name="CloudMedium" type="GPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.784314)
-material = SubResource("CanvasItemMaterial_l73fk")
+material = SubResource("CanvasItemMaterial_d6el4")
 emitting = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_siub8")
@@ -209,7 +221,7 @@ one_shot = true
 
 [node name="CloudBig" type="GPUParticles2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.8)
-material = SubResource("CanvasItemMaterial_l73fk")
+material = SubResource("CanvasItemMaterial_e2a2i")
 emitting = false
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_6fh4a")

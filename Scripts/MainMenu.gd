@@ -7,7 +7,7 @@ func scene_mainMenu():
 	show()
 	$"../Logo".show()
 	$"../Scores".show()
-	$"New Game".show()
+	%"New Game".show()
 	GlobalVariables.game_status = GlobalEnums.GameStatus.STOPPED
 
 func _on_visibility_changed():
@@ -15,18 +15,12 @@ func _on_visibility_changed():
 		$"../Logo".hide()
 		$"../Message".hide()
 		$"../Scores".hide()
-		$GameMode.hide()
+		%GameMode.hide()
 
 func _on_new_game_pressed():
-	$"New Game".hide()
-	$GameMode.show()
+	%"New Game".hide()
+	%GameMode.show()
 	SfxManager.play_sound(SfxManager.sfx_button_click)
-
-func _on_quit_pressed():
-	SfxManager.play_sound(SfxManager.sfx_button_click)
-	await get_tree().create_timer(0.25).timeout
-	get_tree().quit()
-	
 
 func _on_options_button_pressed():
 	hide()

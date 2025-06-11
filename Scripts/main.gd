@@ -22,7 +22,6 @@ func _input(_event):
 				pass
 			GlobalEnums.GameScenes.GAME_SCENE:
 				SceneManager.push_scene(GlobalEnums.GameScenes.PAUSE_MENU)
-				$ControlsDisplay.hide()
 			GlobalEnums.GameScenes.PAUSE_MENU:
 				$HUD/PauseMenu.hide()
 				SceneManager.pop_stack()

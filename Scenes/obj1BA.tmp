@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://boekfg45sygke"]
+
+[ext_resource type="Script" path="res://Scenes/object_cloud.gd" id="1_h8m0g"]
+[ext_resource type="Resource" uid="uid://dcqloo5pj4cxs" path="res://Resources/Clouds/Large_Cloud.tres" id="2_0wy6l"]
+[ext_resource type="Resource" uid="uid://w2tvreaoxj80" path="res://Resources/Clouds/Medium_Cloud.tres" id="3_p3gwm"]
+[ext_resource type="Resource" uid="uid://bl2p0sa0gse5r" path="res://Resources/Clouds/Small_Cloud.tres" id="4_ujv18"]
+
+[node name="object_cloud" type="StaticBody2D"]
+script = ExtResource("1_h8m0g")
+cloud_type_weights = {
+ExtResource("2_0wy6l"): 1,
+ExtResource("3_p3gwm"): 5,
+ExtResource("4_ujv18"): 10
+}
+
+[node name="cloud_sprite" type="Sprite2D" parent="."]
+
+[node name="cloud_collision" type="CollisionShape2D" parent="."]

@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends MarginContainer
 
 func _ready():
 	GlobalSignals.scene_pauseMenu.connect(scene_pauseMenu)
@@ -7,7 +7,9 @@ func scene_pauseMenu():
 	show()
 	$"../Logo".show()
 	%Message.show()
+	%Message/MessageTimer.stop()
 	%Message.text = "Paused"
+	$"../Scores".show()
 	GlobalVariables.game_status = GlobalEnums.GameStatus.STOPPED
 
 
@@ -20,6 +22,7 @@ func _on_end_game_pressed():
 func _on_resume_game_pressed():
 	hide()
 	pause_timer()
+	
 	SfxManager.play_sound(SfxManager.sfx_button_click)
 
 

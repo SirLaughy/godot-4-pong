@@ -1,12 +1,12 @@
 extends Control
 
 # Onready
-@onready var label_up_p1 		= $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_P1_Up/Label_Up_P1
-@onready var label_down_p1 		= $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_P1_Down/Label_Down_P1
-@onready var label_pause_p1 	= $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_P1_Pause/Label_Pause_P1
-@onready var label_up_p2 		= $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button_P2_Up/Label_Up_P2
-@onready var label_down_p2 		= $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button_P2_Down/Label_Down_P2
-@onready var label_pause_p2 	= $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button_P2_Pause/Label_Pause_P2
+@onready var label_up_p1 		= $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_P1_Up/Label_Up_P1
+@onready var label_down_p1 		= $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_P1_Down/Label_Down_P1
+@onready var label_pause_p1 	= $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_P1_Pause/Label_Pause_P1
+@onready var label_up_p2 		= $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button_P2_Up/Label_Up_P2
+@onready var label_down_p2 		= $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button_P2_Down/Label_Down_P2
+@onready var label_pause_p2 	= $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Button_P2_Pause/Label_Pause_P2
 
 # Initialise Empty Variables
 var controls 		: Dictionary

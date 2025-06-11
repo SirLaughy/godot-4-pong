@@ -27,7 +27,7 @@ SfxManager="*res://Scenes/sfx_manager.tscn"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [gui]
 

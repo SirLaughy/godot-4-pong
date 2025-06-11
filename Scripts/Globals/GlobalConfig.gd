@@ -6,7 +6,6 @@ class_name Global_Config
 const SAVEFILE 						= "user://nimbusballconfig.json"
 const DEFAULT_SFX_VOLUME			= 1.0
 const DEFAULT_MUSIC_VOLUME			= 1.0
-const DEFAULT_OUTPUT_DEVICE			= "Default"
 const DEFAULT_SCREEN_SHAKE_LEVEL	= 1.0
 const DEFAULT_SHOW_CONTROLS			= true
 
@@ -22,7 +21,6 @@ const DEFAULT_CONTROLS = {
 # declare empty variables
 var sfx_volume 						: float
 var music_volume 					: float
-var output_device					: String
 var screen_shake_level 				: float
 var screen_size 					: Vector2
 var controls 						: Dictionary
@@ -38,7 +36,6 @@ func _ready():
 	configs = {
 		"sfx_volume" 				: sfx_volume, 
 		"music_volume" 				: music_volume,
-		"output_device"				: output_device,
 		"screen_shake_level" 		: screen_shake_level,
 		"controls" 					: controls,
 		"show_controls"				: show_controls
@@ -47,7 +44,6 @@ func _ready():
 	bind_controls()
 	set_bus_volume("SFX", configs.sfx_volume)
 	set_bus_volume("Music", configs.music_volume)
-	AudioServer.set_output_device(configs.output_device)
 
 # load configs from save, if not avaliable load defaults
 func load_config():
@@ -72,7 +68,6 @@ func load_config():
 	else:
 		configs.sfx_volume 			= DEFAULT_SFX_VOLUME
 		configs.music_volume 		= DEFAULT_MUSIC_VOLUME
-		configs.output_device		= DEFAULT_OUTPUT_DEVICE
 		configs.screen_shake_level 	= DEFAULT_SCREEN_SHAKE_LEVEL
 		configs.controls 			= DEFAULT_CONTROLS
 		configs.show_controls		= DEFAULT_SHOW_CONTROLS
