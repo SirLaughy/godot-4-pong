@@ -11,19 +11,18 @@ config_version=5
 [application]
 
 config/name="Pong2"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://Scenes/old/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 run/max_fps=120
-config/icon="res://Assets/Sprites/icon.svg"
 
 [autoload]
 
-GlobalConfigs="*res://Scripts/Globals/GlobalConfig.gd"
-GlobalEnums="*res://Scripts/Globals/GlobalEnums.gd"
-GlobalSignals="*res://Scripts/Globals/GlobalSignals.gd"
-GlobalVariables="*res://Scripts/Globals/GlobalVariables.gd"
-SceneManager="*res://Scripts/Globals/SceneManager.gd"
-SfxManager="*res://Scenes/sfx_manager.tscn"
+GlobalConfigs="*res://Scripts/Old/Globals/GlobalConfig.gd"
+GlobalEnums="*res://Scripts/Old/Globals/GlobalEnums.gd"
+GlobalSignals="*res://Scripts/Old/Globals/GlobalSignals.gd"
+GlobalVariables="*res://Scripts/Old/Globals/GlobalVariables.gd"
+SceneManager="*res://Scripts/Old/Globals/SceneManager.gd"
+SfxManager="*res://Scenes/old/sfx_manager.tscn"
 
 [display]
 

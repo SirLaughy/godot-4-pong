@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccdilfrvq7qfx"]
+
+[ext_resource type="Script" path="res://Scripts/base_scene.gd" id="1_un0t4"]
+[ext_resource type="Texture2D" uid="uid://5vb373nbxgv1" path="res://Assets/Sprites/background_sprite.png" id="2_b5oth"]
+[ext_resource type="Script" path="res://Scripts/cloud_spawner.gd" id="3_ktjtl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5g6h"]
+size = Vector2(28, 744)
+
+[node name="BaseScene" type="Node2D"]
+script = ExtResource("1_un0t4")
+
+[node name="BackgroundSprite" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_b5oth")
+
+[node name="CloudSpawner" type="Area2D" parent="."]
+position = Vector2(717, 0)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_ktjtl")
+
+[node name="SpawnArea" type="CollisionShape2D" parent="CloudSpawner"]
+position = Vector2(1156, 327)
+shape = SubResource("RectangleShape2D_q5g6h")
+
+[node name="SpawnTimer" type="Timer" parent="CloudSpawner"]
+autostart = true
+
+[node name="BackgroundSpriteTransition" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_b5oth")
+
+[node name="EngineTimeTimer" type="Timer" parent="."]
+wait_time = 200.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="CloudSpawner/SpawnTimer" to="CloudSpawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="EngineTimeTimer" to="." method="_on_timer_engine_time_timeout"]

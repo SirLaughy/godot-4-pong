@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Cloud_Type" load_steps=3 format=3 uid="uid://bl2p0sa0gse5r"]
 
-[ext_resource type="Script" path="res://Scripts/resource_cloud_type.gd" id="1_13t86"]
-[ext_resource type="Texture2D" uid="uid://c05xi8hkyu425" path="res://Assets/Particles/cloudsmall_spritesheet.png" id="2_k6sff"]
+[ext_resource type="Script" path="res://Scripts/Resources/cloud_type.gd" id="1_13t86"]
+[ext_resource type="Texture2D" uid="uid://c05xi8hkyu425" path="res://Assets/Sprites/Clouds/cloud_small_spritesheet.png" id="2_k6sff"]
 
 [resource]
 script = ExtResource("1_13t86")
