@@ -13,7 +13,7 @@ var scene : PackedScene
 
 # loads cloud scene into memory
 func _ready():
-	scene = load("res://Scenes/cloud.tscn") # load cloud object into memory
+	scene = load("res://Scenes/cloud_scene.tscn") # load cloud object into memory
 	spawn_cloud(clouds_on_start, init_spawn_area) # spawn initial clouds around the screen
 	$CloudInit.queue_free() # remove uneeded nodes from memory
 

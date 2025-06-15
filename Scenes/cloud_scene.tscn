@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://boekfg45sygke"]
+
+[ext_resource type="Script" path="res://Scripts/cloud_spawn.gd" id="1_71qd0"]
+[ext_resource type="Resource" uid="uid://dcqloo5pj4cxs" path="res://Resources/Clouds/Large_Cloud.tres" id="2_io077"]
+[ext_resource type="Resource" uid="uid://w2tvreaoxj80" path="res://Resources/Clouds/Medium_Cloud.tres" id="3_ohwey"]
+[ext_resource type="Resource" uid="uid://bl2p0sa0gse5r" path="res://Resources/Clouds/Small_Cloud.tres" id="4_np8b7"]
+
+[node name="CloudScene" type="StaticBody2D"]
+show_behind_parent = true
+position = Vector2(10, -10)
+script = ExtResource("1_71qd0")
+wind_speed = 25
+cloud_type_weights = {
+ExtResource("2_io077"): 5,
+ExtResource("3_ohwey"): 10,
+ExtResource("4_np8b7"): 1
+}
+
+[node name="CloudSprite" type="Sprite2D" parent="."]

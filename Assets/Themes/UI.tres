@@ -1,10 +1,7 @@
-[gd_resource type="Theme" load_steps=47 format=3 uid="uid://fifqueo1ohan"]
+[gd_resource type="Theme" load_steps=44 format=3 uid="uid://fifqueo1ohan"]
 
 [ext_resource type="FontFile" uid="uid://ccfqm3vdf1qg" path="res://Assets/Fonts/AmaticSC-Regular.ttf" id="1_84w28"]
 [ext_resource type="Texture2D" uid="uid://eebmpmh14fbx" path="res://Assets/Themes/ui_spritesheet.png" id="2_0akol"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/sprite_button_hovered.png" id="2_bcb31"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/sprite_button_default.png" id="3_jqme7"]
-[ext_resource type="Texture2D" path="res://Assets/Sprites/sprite_button_pressed.png" id="4_i0m18"]
 [ext_resource type="FontFile" uid="uid://cl7q3e4lr70i" path="res://Assets/Fonts/AmaticSC-Bold.ttf" id="5_nfa4j"]
 [ext_resource type="Texture2D" uid="uid://bby8waeote357" path="res://Assets/Icons/check_box_outline_blank_64dp_5F6368_FILL0_wght400_GRAD0_opsz48.png" id="6_pul46"]
 
@@ -118,21 +115,16 @@ texture_margin_right = 98.0
 texture_margin_bottom = 48.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6oypj"]
-texture = ExtResource("3_jqme7")
 modulate_color = Color(0.572988, 0.572988, 0.572988, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ktw7n"]
-texture = ExtResource("3_jqme7")
 modulate_color = Color(1, 1, 0.913725, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fid0i"]
-texture = ExtResource("2_bcb31")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k386r"]
-texture = ExtResource("3_jqme7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qer88"]
-texture = ExtResource("4_i0m18")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p1tp0"]
 atlas = ExtResource("2_0akol")

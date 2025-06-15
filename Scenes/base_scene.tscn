@@ -1,13 +1,107 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccdilfrvq7qfx"]
+[gd_scene load_steps=12 format=3 uid="uid://ccdilfrvq7qfx"]
 
 [ext_resource type="Texture2D" uid="uid://5vb373nbxgv1" path="res://Assets/Sprites/background_sprite.png" id="2_b5oth"]
+[ext_resource type="Script" path="res://Scripts/ui_manager.gd" id="3_1p3tq"]
 [ext_resource type="Script" path="res://Scripts/cloud_spawner.gd" id="3_ktjtl"]
+[ext_resource type="Texture2D" uid="uid://baf63n7ipek5i" path="res://Assets/Sprites/logo_sprite.png" id="3_qyy3c"]
+[ext_resource type="Script" path="res://Scripts/logo_sprite.gd" id="5_8kkq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5g6h"]
 size = Vector2(21, 525)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0uyje"]
 size = Vector2(878, 390)
+
+[sub_resource type="Animation" id="Animation_1o5c6"]
+resource_name = "fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jawrs"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.151844, -0.150098]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.9, 0.9), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_n01dh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 0.7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.151844]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xbhbt"]
+_data = {
+"RESET": SubResource("Animation_n01dh"),
+"fade_in": SubResource("Animation_1o5c6"),
+"idle": SubResource("Animation_jawrs")
+}
 
 [node name="BaseScene" type="Node2D"]
 
@@ -38,5 +132,22 @@ position = Vector2(-717, 0)
 position = Vector2(115, 325)
 shape = SubResource("RectangleShape2D_0uyje")
 debug_color = Color(0.897997, 0.000185977, 0.770283, 0.42)
+
+[node name="UIManager" type="Node" parent="."]
+script = ExtResource("3_1p3tq")
+
+[node name="LogoSprite" type="Sprite2D" parent="UIManager"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(576, 224)
+rotation = 0.151844
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_qyy3c")
+script = ExtResource("5_8kkq4")
+
+[node name="IdleAnimationPlayer" type="AnimationPlayer" parent="UIManager/LogoSprite"]
+libraries = {
+"": SubResource("AnimationLibrary_xbhbt")
+}
+autoplay = "idle"
 
 [connection signal="timeout" from="CloudSpawner/SpawnTimer" to="CloudSpawner" method="_on_timer_timeout"]

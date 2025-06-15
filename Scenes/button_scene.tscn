@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl21f1jokqxso"]
+
+[ext_resource type="Theme" uid="uid://fifqueo1ohan" path="res://Assets/Themes/UI.tres" id="2_6oyjf"]
+
+[node name="ButtonScene" type="Button"]
+custom_minimum_size = Vector2(256, 0)
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("2_6oyjf")
+text = "text"
