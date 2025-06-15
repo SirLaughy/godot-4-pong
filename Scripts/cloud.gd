@@ -1,15 +1,15 @@
 extends StaticBody2D
 
-## Initialise and move clouds across the screen
+## Randomise cloud properties and move clouds across the screen
+
+var speed : int
+var rng : RandomNumberGenerator
 
 @export var cloud_type : Resource
 @export var wind_speed : int
 @export var cloud_type_weights : Dictionary
 
 @onready var cloud_sprite = $CloudSprite
-
-var speed : int
-var rng : RandomNumberGenerator
 
 
 func _ready():
@@ -31,8 +31,8 @@ func cloud_init() -> void:
 	cloud_type = rand_weight(cloud_type_weights) # randomise cloud_type resource
 	speed = ((((100.0 - (float(cloud_type.cloud_size) * 5.0)) / 100.0) * float(wind_speed)) * rng.randf_range(0.9, 1.1)) # randomise speed based on cloud size
 	scale = Vector2(rng.randf_range(0.8, 1.2), rng.randf_range(0.8, 1.2)) # randomise scale
-	rotate(rng.randi_range(-6, 6)) # randomise rotation
-	modulate.a = rng.randf_range(0.1, 0.4) # randomise transparency
+	rotate(rng.randi_range(-0.5, 0.5)) # randomise rotation
+	modulate.a = rng.randf_range(0.1, 0.5) # randomise transparency
 	
 	# initialise sprite
 	cloud_sprite.texture = cloud_type.sprite_sheet # set sprite sheet
@@ -41,7 +41,7 @@ func cloud_init() -> void:
 	cloud_sprite.frame = rng.randi_range(0, (cloud_type.columns * cloud_type.rows) - 1) # randomly choose sprite in spritesheet
 
 func rand_weight(weight_dict : Dictionary) -> Object:
-	var total : int # sum of weights
+	var total : int = 0 # sum of weights
 	var random : int # random number betweeen 1 and total
 	var sorting_array : Array # temp array to get weights in descending order
 	
