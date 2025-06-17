@@ -12,6 +12,45 @@ size = Vector2(21, 525)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0uyje"]
 size = Vector2(878, 390)
 
+[sub_resource type="Animation" id="Animation_n01dh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 0.7)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.151844]
+}
+
 [sub_resource type="Animation" id="Animation_1o5c6"]
 resource_name = "fade_in"
 length = 2.0
@@ -57,45 +96,6 @@ tracks/1/keys = {
 "values": [Vector2(0.9, 0.9), Vector2(1.1, 1.1)]
 }
 
-[sub_resource type="Animation" id="Animation_n01dh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.7, 0.7)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.151844]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xbhbt"]
 _data = {
 "RESET": SubResource("Animation_n01dh"),
@@ -137,8 +137,7 @@ debug_color = Color(0.897997, 0.000185977, 0.770283, 0.42)
 script = ExtResource("3_1p3tq")
 
 [node name="LogoSprite" type="Sprite2D" parent="UIManager"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(576, 224)
+position = Vector2(576, 223)
 rotation = 0.151844
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_qyy3c")

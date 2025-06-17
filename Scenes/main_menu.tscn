@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://g2g8fr1v5b55"]
+[gd_scene load_steps=3 format=3 uid="uid://g2g8fr1v5b55"]
 
 [ext_resource type="PackedScene" uid="uid://cl21f1jokqxso" path="res://Scenes/button_scene.tscn" id="1_6xv67"]
+[ext_resource type="PackedScene" uid="uid://4ei8selxvucq" path="res://Scenes/cycle_button_scene.tscn" id="1_qjpuw"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,29 +16,57 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -388.0
-offset_top = -95.0
+offset_top = -165.0
 offset_right = 388.0
-offset_bottom = 95.0
+offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_right = 17
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Buffer7" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
 
-[node name="PlayersButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_6xv67")]
+[node name="Buffer3" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Players"
+size_flags_horizontal = 3
+
+[node name="PlayersCycleButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_qjpuw")]
+layout_mode = 2
+cycle_name = "Players"
+text_array = [1, 2]
+
+[node name="Buffer6" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="PlayButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_6xv67")]
 layout_mode = 2
+size_flags_vertical = 4
 text = "Play"
 
-[node name="FirstToButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_6xv67")]
+[node name="Buffer5" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "First To"
+size_flags_horizontal = 3
+
+[node name="FirstToCycleButton" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_qjpuw")]
+layout_mode = 2
+cycle_name = "First To"
+text_array = [3, 5, 7, 9, 11]
+
+[node name="Buffer4" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
