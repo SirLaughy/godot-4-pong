@@ -1,5 +1,6 @@
 extends Node
 
+## UI Manager
 
 var scene : PackedScene
 
@@ -19,7 +20,7 @@ func open_menu(menu : SignalBus.MenuType) -> void:
 	match menu:
 		SignalBus.MenuType.MAIN_MENU:
 			scene = load("res://Scenes/main_menu.tscn")
-			center = Vector2(576, 524)
+			center = Vector2(576, 560)
 	
 	# instantiate menu
 	var instance = scene.instantiate()

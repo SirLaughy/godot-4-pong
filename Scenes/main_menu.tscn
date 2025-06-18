@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://g2g8fr1v5b55"]
+[gd_scene load_steps=4 format=3 uid="uid://g2g8fr1v5b55"]
 
 [ext_resource type="PackedScene" uid="uid://cl21f1jokqxso" path="res://Scenes/button_scene.tscn" id="1_6xv67"]
 [ext_resource type="PackedScene" uid="uid://4ei8selxvucq" path="res://Scenes/cycle_button_scene.tscn" id="1_qjpuw"]
+[ext_resource type="Script" path="res://Scripts/Classes/button_scene.gd" id="3_eubf2"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -67,6 +68,10 @@ text_array = [3, 5, 7, 9, 11]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 2
+
+[node name="ButtonScene" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_eubf2")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

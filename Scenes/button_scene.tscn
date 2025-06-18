@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cl21f1jokqxso"]
 
 [ext_resource type="Theme" uid="uid://fifqueo1ohan" path="res://Assets/Themes/UI.tres" id="2_6oyjf"]
-[ext_resource type="Script" path="res://Scripts/button_scene.gd" id="2_027vk"]
+[ext_resource type="Script" path="res://Scripts/Classes/button_scene.gd" id="2_tkp3i"]
 
 [node name="ButtonScene" type="Button"]
 custom_minimum_size = Vector2(256, 0)
@@ -9,6 +9,6 @@ offset_right = 8.0
 offset_bottom = 8.0
 theme = ExtResource("2_6oyjf")
 text = "text"
-script = ExtResource("2_027vk")
+script = ExtResource("2_tkp3i")
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]

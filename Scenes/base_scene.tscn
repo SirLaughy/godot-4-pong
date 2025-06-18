@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccdilfrvq7qfx"]
+[gd_scene load_steps=15 format=3 uid="uid://ccdilfrvq7qfx"]
 
+[ext_resource type="Script" path="res://Scripts/base_scene.gd" id="1_3m7fg"]
 [ext_resource type="Texture2D" uid="uid://5vb373nbxgv1" path="res://Assets/Sprites/background_sprite.png" id="2_b5oth"]
+[ext_resource type="Script" path="res://Scripts/debug_manager.gd" id="2_h8aj7"]
 [ext_resource type="Script" path="res://Scripts/ui_manager.gd" id="3_1p3tq"]
 [ext_resource type="Script" path="res://Scripts/cloud_spawner.gd" id="3_ktjtl"]
 [ext_resource type="Texture2D" uid="uid://baf63n7ipek5i" path="res://Assets/Sprites/logo_sprite.png" id="3_qyy3c"]
@@ -103,7 +105,13 @@ _data = {
 "idle": SubResource("Animation_jawrs")
 }
 
+[sub_resource type="SystemFont" id="SystemFont_e1qrs"]
+
 [node name="BaseScene" type="Node2D"]
+script = ExtResource("1_3m7fg")
+
+[node name="SaveManager" type="Node" parent="."]
+unique_name_in_owner = true
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
@@ -133,7 +141,11 @@ position = Vector2(115, 325)
 shape = SubResource("RectangleShape2D_0uyje")
 debug_color = Color(0.897997, 0.000185977, 0.770283, 0.42)
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+
 [node name="UIManager" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("3_1p3tq")
 
 [node name="LogoSprite" type="Sprite2D" parent="UIManager"]
@@ -148,5 +160,16 @@ libraries = {
 "": SubResource("AnimationLibrary_xbhbt")
 }
 autoplay = "idle"
+
+[node name="DebugManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_h8aj7")
+
+[node name="DebugLabel" type="Label" parent="DebugManager"]
+offset_right = 40.0
+offset_bottom = 61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_e1qrs")
+theme_override_font_sizes/font_size = 16
 
 [connection signal="timeout" from="CloudSpawner/SpawnTimer" to="CloudSpawner" method="_on_timer_timeout"]

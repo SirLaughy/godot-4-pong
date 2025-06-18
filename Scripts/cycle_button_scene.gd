@@ -2,8 +2,6 @@ extends Control
 
 ## Base cycle button scene
 
-signal selection_changed(type, selection)
-
 @export var cycle_name : String
 @export var text_array : Array
 
@@ -14,7 +12,7 @@ var current_selection : int:
 	set(value):
 		current_selection = value
 		selection_label.text = str(text_array[value])
-		selection_changed.emit(cycle_name, text_array[value])
+		SignalBus.selection_changed.emit(cycle_name, text_array[value])
 
 @onready var cycle_label = $VBoxContainer/CycleLabel
 @onready var up_button = $VBoxContainer/UpButton
@@ -25,7 +23,6 @@ var current_selection : int:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# set defaults
-	current_selection = 0 # set selection to default
 	cycle_label.text = str(cycle_name) # set initial label
 
 
@@ -35,6 +32,7 @@ func _on_up_button_button_up():
 		current_selection += 1
 	else:
 		current_selection = 0
+	up_button.focus_mode = false # prevent focus mode on click
 
 
 func _on_down_button_button_up():
@@ -43,3 +41,4 @@ func _on_down_button_button_up():
 		current_selection -= 1
 	else:
 		current_selection = text_array.size() - 1
+	down_button.focus_mode = false # prevent focus mode on click
