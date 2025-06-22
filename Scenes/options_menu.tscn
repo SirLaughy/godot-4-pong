@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://4u5hju67m83j"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/menu_scene.gd" id="1_ymqnr"]
+[ext_resource type="PackedScene" uid="uid://imkbuo3s2dkf" path="res://Scenes/v_slider_scene.tscn" id="2_p177s"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ymqnr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+tab_alignment = 1
+clip_tabs = false
+
+[node name="Sound" type="VBoxContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Sound"]
+layout_mode = 2
+text = "Basic"
+horizontal_alignment = 1
+
+[node name="HSliderMaster" parent="MarginContainer/TabContainer/Sound" instance=ExtResource("2_p177s")]
+layout_mode = 2
+slider_name = "Volume"
+
+[node name="HSliderSFX" parent="MarginContainer/TabContainer/Sound" instance=ExtResource("2_p177s")]
+layout_mode = 2
+slider_name = "Sound Effects"
+
+[node name="HSliderUI" parent="MarginContainer/TabContainer/Sound" instance=ExtResource("2_p177s")]
+layout_mode = 2
+slider_name = "UI"
+
+[node name="HSliderMusic" parent="MarginContainer/TabContainer/Sound" instance=ExtResource("2_p177s")]
+layout_mode = 2
+slider_name = "Music"
+
+[node name="Graphics" type="Control" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Controls" type="Control" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Acessibility" type="Control" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2

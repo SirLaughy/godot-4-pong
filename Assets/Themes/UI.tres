@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=44 format=3 uid="uid://fifqueo1ohan"]
+[gd_resource type="Theme" load_steps=45 format=3 uid="uid://fifqueo1ohan"]
 
 [ext_resource type="FontFile" uid="uid://ccfqm3vdf1qg" path="res://Assets/Fonts/AmaticSC-Regular.ttf" id="1_84w28"]
 [ext_resource type="Texture2D" uid="uid://eebmpmh14fbx" path="res://Assets/Themes/ui_spritesheet.png" id="2_0akol"]
@@ -179,6 +179,14 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vtasg"]
+texture = ExtResource("2_0akol")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+region_rect = Rect2(64, 640, 192, 192)
+
 [resource]
 default_font = ExtResource("1_84w28")
 default_font_size = 48
@@ -264,3 +272,5 @@ PopupMenu/icons/radio_unchecked = SubResource("AtlasTexture_l8vao")
 PopupMenu/icons/radio_unchecked_disabled = SubResource("AtlasTexture_sk3b3")
 PopupMenu/styles/hover = SubResource("StyleBoxTexture_6waah")
 PopupMenu/styles/panel = SubResource("StyleBoxTexture_d1eg6")
+TabContainer/fonts/font = ExtResource("1_84w28")
+TabContainer/styles/panel = SubResource("StyleBoxTexture_vtasg")
